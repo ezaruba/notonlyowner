@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} | Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <section class="col-lg-12">
+    {% for article in articles %}
+        <article>
+            <h2>
+                <a href="{{article.url}}">{{ article.title }}</a>
+            </h2>
+            <span class="published-date">
+                # Published on {{ article.date | strftime('%x')}}
+            </span>
+            <p>{{ article.summary }}</p>
+        </article>        
+    {% endfor %}
+    </section>
+</div>
+{% endblock %}
