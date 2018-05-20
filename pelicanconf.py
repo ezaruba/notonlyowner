@@ -51,11 +51,15 @@ STATIC_PATHS = [
     'extra/favicon.ico',
     'extra/_headers'
 ]
+
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
     'extra/_headers': {'path': '_headers'}
 }
+
+PLUGIN_PATHS = [THEME + '/plugins']
+PLUGINS = ['assets', 'post_stats']
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

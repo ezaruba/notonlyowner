@@ -3,10 +3,10 @@ Date: 2018-05-19 18:30
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-intro
-Summary: First post of a series in which we will tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank"}. In this first article, we prepare the environment with Truffle and Ganache-cli.
+Summary: First post of a series in which we will tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this first article, we prepare the environment with Truffle and Ganache-cli.
 
 ## Introduction
-In this series of posts, I will cover the challenges included in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/). In the process,
+In this series of posts, I will cover the challenges included in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In the process,
 I'll be explaining the Ethereum and Solidity fundamentals that are needed to solve each challenge, along with the code necessary to exploit the vulnerabilities found in the smart contracts.
 
 I assume that you have some basic knowledge of what Ethereum and Smart Contracts are. If you don't, well, Zeppelin happens to have [a series of posts explaining the basics and not-so-basics of the Ethereum platform](https://blog.zeppelin.solutions/a-gentle-introduction-to-ethereum-programming-part-1-783cc7796094).
@@ -54,7 +54,7 @@ In `port`, write the local port in which you'll run the blockchain service. Gana
 For more advanced Truffle configurations and deeper explanations, refer to [Truffle Configuration page](http://truffleframework.com/docs/advanced/configuration).
 
 ## Summing up
-1. `npm i -g truffle ganache-cli` (assuming you have [Node.js](https://nodejs.org){:target="_blank"} installed)
+1. `npm i -g truffle ganache-cli` (assuming you have [Node.js](https://nodejs.org){:target="_blank",:rel="noopener"} installed)
 2. Create a folder to keep all our contracts and exploits: `mkdir ethernaut-ctf` and `cd ethernaut-ctf`
 3. Inside that folder, set up Truffle with `truffle init`
 4. Start Ganache with `ganache-cli`
@@ -62,6 +62,6 @@ For more advanced Truffle configurations and deeper explanations, refer to [Truf
 6. If everything went well, a `truffle(development)>` prompt should appear.
     - There, you could do `web3.eth.accounts` and hit enter. A JSON-formatted list of 10 public addresses should appear. Those are the 10 EOAs (the public addresses) that Ganache created for you.
 
-Okey, we are all set. In the next article, we will get our hands dirty and solve the first challenge: [Fallback](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank"}.
+Okey, we are all set. In the next article, we will get our hands dirty and solve the first challenge: [Fallback](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank",:rel="noopener"}.
 
 To do so, we will first walk through **the very basics of Solidity**, so we can then cover how to deploy the vulnerable smart contract to the local blockchain to start interacting with it. Finally, we will understand **why the Fallback contract is vulnerable** and how you can **exploit it** to pass the challenge.
