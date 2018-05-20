@@ -1,4 +1,7 @@
+beautifulsoup4==4.6.0
 blinker==1.4
+bs4==0.0.1
+cssmin==0.2.0
 docutils==0.14
 feedgenerator==1.9
 Jinja2==2.10
@@ -11,3 +14,4 @@ python-dateutil==2.7.3
 pytz==2018.4
 six==1.11.0
 Unidecode==1.0.22
+webassets==0.12.1
