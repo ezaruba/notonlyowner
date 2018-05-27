@@ -1,5 +1,5 @@
-Title: About
-Slug: about
+Title: About Me
+Slug: about-me
 Summary: 
 
 Hey there! I'm **Martin**.
