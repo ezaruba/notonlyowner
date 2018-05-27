@@ -9,7 +9,7 @@
             <article>
                 <h1>{{ article.title }}</h1>
                 <span class="published-date">
-                    # Published on {{ article.date | strftime('%x')}} | {{ article.stats['read_mins'] }} minutes read
+                    # Published on {{ article.date | strftime('%x')}} -- {{ article.stats['read_mins'] }} minutes read
                 </span>
                 <hr>
                 {{ article.content }}
