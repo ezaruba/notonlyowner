@@ -1,4 +1,4 @@
 /*
-  x-frame-options: DENY
-  x-xss-protection: 1; mode=block
-  strict-transport-security: max-age=3600
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Strict-Transport-Security: max-age=3600
