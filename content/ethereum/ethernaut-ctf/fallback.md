@@ -162,13 +162,13 @@ Okey, back to Fallback's (the contract) fallback function. In it, we discover th
 ### Deploying Fallback
 After studying the whole Fallback contract code, we found a way to become the owners. Now, how do we do actually do it?.
 
-Although the Zeppelin's guys provide us with an already set up interactive in-browser platform, I found it more enriching to the learning process to set up my own local platform using the tools we saw in the [first article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). So that is what we are going to do.
+Although the Zeppelin's guys provide us with an already set up interactive in-browser platform, I found it far more enriching to the learning process to set up my own local test environment using the tools we saw in the [first article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). So that is what we are going to do.
 
 First, in the `contracts` folder create a file called `Fallback.sol`. Within that file, paste the [source code of the Fallback contract](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7). Save and close.
 
 In the root directory of your project (at the same level as the `contracts` folder) create a new folder called `exploits`. Inside it, create a new file `fallback.exploit.js`.
 
-Next, locate a file called `2_deploy_contracts.js` inside the `migrations` folder. Should the file not be there, create it. This file is used to tell Truffle which contracts should be deployed to the network when the `truffle migrate` command is executed. As we want to deploy the `Fallback.sol` contract, let's include the following code:
+Next, locate a file called `2_deploy_contracts.js` inside the `migrations` folder. Should the file not be there, create it. This file is used to tell Truffle which contracts are to be deployed to the network when the `truffle migrate` command is executed. As we want to deploy the `Fallback.sol` contract, let's include the following code:
 
 ~~~javascript
 /* migrations/2_deploy_contracts.js */
@@ -179,15 +179,113 @@ module.exports = deployer => {
 }
 ~~~
 
-Even though the above code is enough for now, you should refer to Truffle's docs to gain more insights about the deployment scripts and how to exactly configure and use them.
+Even though the above code is enough for now, you should refer to [Truffle's docs on Migrations](http://truffleframework.com/docs/getting_started/migrations) to gain more insights about the deployment scripts and how to exactly configure and use them.
 
-Time to launch Ganache-cli! Fire up a new terminal and follow the instructions explained in the [introductory article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). Once done, open another terminal and, being in the root folder of the project, run `truffle migrate`. If everything went well, the output should tell you that the Fallback contract was successfuly deployed (the message even includes the contract's address).
+Ok, time to launch Ganache-cli! Fire up a new terminal and follow the instructions explained in the [introductory article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). Once done, open another terminal and, being in the root folder of the project, run `truffle migrate`. If everything went well, the output should be similar to:
+
+~~~
+[...]
+Running migration: 2_deploy_contracts.js
+  Deploying Fallback...
+  ... 0xd79a5f17584a8e914d14414198d729dd5cb7281cef5c2a2abc324fad04ae938c
+  Fallback: 0x53ae8970e687a2c628f05d885dfae84f37a57a8b
+Saving successful migration to network...
+  ... 0x83a7c6062eec5c51f48d28f0224504564222fdb959db3b42dca019eb95bcca06
+Saving artifacts...
+[...]
+~~~
+
+Note that the message even includes the contract's address - 0x53ae8970e687a2c628f05d885dfae84f37a57a8b in this case.
 
 Now that the contract has been deployed, it is time to start interacting with it.
 
 ### Enter Web3
 
-Remeber we launched the interactive development console of Truffle which let us 'talk' to our local blockchain ? You better forget about that useless piece of crap.
+Remeber how in the [introductory article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro#summing-up) we launched the interactive development console of Truffle which let us 'talk' to our local blockchain ? You better forget about that useless piece of crap.
 
-Just kidding. But we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in Javascript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/) - already provided by Truffle as a global variable in our scripts as long as we launch them with `truffle exec <my-badass-script.js>` (so no need to `npm install` nor `require` anything, cool).
+Just kidding (: - but we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in Javascript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/), which is already provided by Truffle as a global variable in our scripts as long as we launch them with `truffle exec <my-badass-script.js>` (so no need to `npm install` nor `require` anything, cool).
+
+Create a new folder `exploits` in the root directory of the project and a Javascript file called `fallback.exploit.js` inside the folder. Now, let's write the exploit.
+
+It was earlier mentioned that Truffle already provides some global variables in our scripts to make our lives easier, among them: `web3` and `artifacts`. The latter is used to 'require' contracts in our scripts, what allows us to easily interact with any contract - so that is what we do in our first line of code. I'm also importing the assert library (this is not mandatory - I just find it useful for debugging and avoiding an if-else hell).
+
+~~~javascript
+/* fallback.exploit.js */
+const FallbackContract = artifacts.require('Fallback')
+const assert = require('assert')
+~~~
+
+According to [Truffle's docs on external scripts](http://truffleframework.com/docs/getting_started/scripts#file-structure), we ought to export a function that takes a callback as an argument. Moreover, that callback needs to be executed at the end of the script, such as:
+
+~~~ javascript
+/* fallback.exploit.js */
+const FallbackContract = artifacts.require('Fallback')
+const assert = require('assert')
+
+async function execute(callback) { 
+    // [...]
+    callback()
+}
+
+module.exports = execute
+~~~
+
+I know, nothing fancy yet. This is all Truffle-related stuff, let's call it the *structure* of our exploits. In fact, you'll see that we will always come back to this boilerplate in future tutorials, so keep it at hand. Let's go ahead and do something more interesting. Remember that to solve Fallback, we need to do 3 simple tasks:
+
+1. Make a contribution minor than 0.001 ether
+2. Call the fallback function to become the owner
+3. Withdraw!
+
+So...
+
+~~~javascript
+/* fallback.exploit.js */
+const FallbackContract = artifacts.require('Fallback')
+const assert = require('assert')
+
+async function execute(callback) { 
+    
+    // Get attacker account
+    let attacker = web3.eth.accounts[1]
+    console.log(`Attacker address: ${attacker}`)
+
+    // Instance vulnerable contract
+    let contract = await FallbackContract.deployed()
+
+    // Check who's the owner
+    let contractOwner = await contract.owner.call()
+    assert.equal(contractOwner, web3.eth.accounts[0])
+    console.log(`Contract owner: ${contractOwner}`)
+
+    // 1. Make a small contribution
+    await contract.contribute({
+        from: attacker,
+        value: web3.toWei(0.0009, 'ether')
+    })
+
+    callback()
+}
+
+module.exports = execute
+~~~
+
+Since, by default, our contracts are deployed using the first account provided by Truffle (`web3.eth.accounts[0]`), we are going to suppose that `web3.eth.accounts[0]` is the *victim* account. Our *attacker* account will be, in most cases, `web3.eth.accounts[1]`.
+
+In the script, once we find the attacker account, we then create an instance of an *already deployed* contract using the `deployed()` method. This instance, named `contract`, can be used to call all public functions defined in the Fallback contract's ABI, including the getters for the public variables. In particular, we are first calling the public getter of the `owner` variable by doing `contract.owner.call()` and after checking that the current owner is the victim address, we make the small contribution to the contract with `contract.contribute(...)`.
+
+You might now be wondering why on earth we are passing an object as an argument to `contribute`, when it actually does not take any arguments at all (according to its definition in Fallback.sol). If you are not, well, you should.
+The thing is, Truffle and Web3 do plenty *magic* stuff behind the scenes.
+Thanks to Web3, there are [multiple ways in which you can call contract functions](https://github.com/ethereum/wiki/wiki/JavaScript-API#contract-methods):
+1. `contract.methodName.call()`
+2. `contract.methodName.sendTransaction()`
+3. `contract.methodName()`
+
+For simplicity, I tend to go with version 3 most of the times. The arguments passed to the function should start with those specific to the function (none in `contribute`), followed by a *transaction object* (the object we are passing to `contribute`) and a callback (I'm done with using callbacks, I rather async/await now).
+
+Things to take into account regarding the [transaction object](https://github.com/ethereum/wiki/wiki/JavaScript-API#parameters-25):
+- `from` defaults to `web3.eth.accounts[0]` if not explicitly defined
+- `to` is not necessary when calling a contract's function
+- `value` must be in Wei units, that is why we do `value: web3.toWei(...)`
+Although these are the three attributes we will most often use, please remember that the others exist as well and might come in handy sometimes.
+
 
