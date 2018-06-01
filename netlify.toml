@@ -1,0 +1,9 @@
+[build]
+publish = "output"
+command = "make publish"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-XSS-Protection = "1; mode=block"
+    Strict-Transport-Security = "max-age=3600"
