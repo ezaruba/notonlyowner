@@ -164,7 +164,9 @@ Now, what if we just want to send the contract some ether just like we do with a
 - A. The fallback function **is defined**, so gnomes diligently take the value sent with the transaction, store it in the contract's balance, and then execute the function's code.
 - B. The fallback function **is not defined**, so gnomes just do not know what the hell they should do and just halt and revert the whole thing, telling you to fuck off. True story.
 
-Okey, back to Fallback's (the contract) fallback function. In it, we discover the easier way we were looking for to become the owners of the contract!. Anyone who has previously made a contribution and calls the function fallback afterwards (sending some aditional ethers), automatically becomes the new owner, therefore passing the challenge. At this point, I imagine you're as fed up with this whole Solidity theory as I am, so let's do it!.
+Okey, back to Fallback's (the contract) fallback function. In it, we discover the easier way we were looking for to become the owners of the contract!. Anyone who has previously made a contribution and calls the function fallback afterwards (sending some aditional ethers), automatically becomes the new owner, therefore passing the challenge. 
+
+At this point, I imagine you're as fed up with this whole Solidity theory as I am, so let's write some code.
 
 ## Deploying your first smart contract
 After studying the whole Fallback contract code, we found a way to become the owners. Now, how do we do actually do it?.
