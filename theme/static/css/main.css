@@ -1,5 +1,7 @@
 body * {
-    font-family: "Raleway", Helvetica, Arial, sans-serif;
+    font-family: "Raleway", "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    color: #100;
 }
 
 a {
@@ -10,15 +12,15 @@ strong {
     color: #2c2c54;
 }
 
-code {
-    color: #aa5500;
-    font-family: 'Consolas';
-}
-
 pre {
     border: 1px solid #ccc;
     border-radius: 16px;
     padding: 0.1em 8px;
+}
+
+p, ol, ul, blockquote {
+    font-size: 115%;
+    text-rendering: optimizeLegibility;
 }
 
 .navbar {
@@ -49,7 +51,7 @@ pre {
     background-color: #eaecef;
 }
 
-.published-date {
+.published-date, #disclaimer p {
     font-style: italic;
     color: rgb(92, 92, 92);
     font-size: 1rem;

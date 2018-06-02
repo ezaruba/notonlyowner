@@ -4,12 +4,13 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
         <main>
             <article>
                 <h1>{{ article.title }}</h1>
                 <span class="published-date">
-                    # Published on {{ article.date | strftime('%x')}} -- {{ article.stats['read_mins'] }} minutes read
+                    # Published on {{ article.date | strftime('%M %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
                 </span>
                 <hr>
                 {{ article.content }}
@@ -17,14 +18,13 @@
         </main>        
         <hr>
         <div id="disclaimer">
-            <p>
-                <em>
-                    As you may have guessed, I am light-years away from being an expert in Ethereum, Smart Contracts, Solidity, English grammar, and so on.
-                    So, for all of you who know and understand a little more than what I do, please open an issue or even a pull request on
-                    <a href="https://github.com/tinchoabbate/hackingmood" target="_blank" rel="noopener">hackingmood's repo</a> and help make this blog a little better. Thanks!.
-                </em>
+            <p>                
+                As you may have guessed, I am light-years away from being an expert in Ethereum, Smart Contracts, Solidity, English grammar, and so on.
+                So, for all of you who know and understand a little more than what I do, please open an issue or even a pull request on
+                <a href="https://github.com/tinchoabbate/hackingmood" target="_blank" rel="noopener">hackingmood's repo</a> and help make this blog a little better. Thanks!.                
             </p>            
         </div>
     </div>
+    <div class="col-lg-2"></div>
 </div>
 {% endblock %}
