@@ -3,14 +3,13 @@
 {% block title %}{{ SITENAME }} | {{ article.title }}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-2"></div>
+<div class="row justify-content-center">
     <div class="col-lg-8">
         <main>
             <article>
                 <h1>{{ article.title }}</h1>
                 <span class="published-date">
-                    # Published on {{ article.date | strftime('%M %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
+                    # Published on {{ article.date | strftime('%B %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
                 </span>
                 <hr>
                 {{ article.content }}
@@ -25,6 +24,5 @@
             </p>            
         </div>
     </div>
-    <div class="col-lg-2"></div>
 </div>
 {% endblock %}

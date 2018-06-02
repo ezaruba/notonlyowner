@@ -32,13 +32,17 @@ p, ol, ul, blockquote {
 
 .navbar-brand {
     font-family: 'Shadows Into Light', cursive;
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 .navbar-brand img {
     width: 3rem;
     height: 2.5rem;
     margin: 0 -8px 0 0;
+}
+
+.navbar-toggler {
+    font-size: 0.9rem;
 }
 
 .nav-item {

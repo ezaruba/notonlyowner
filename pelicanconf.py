@@ -10,6 +10,8 @@ PATH = 'content'
 
 TIMEZONE = 'America/Buenos_Aires'
 
+LOCALE = 'en_US'
+
 DEFAULT_LANG = 'en'
 
 THEME = 'theme'
@@ -54,8 +56,7 @@ STATIC_PATHS = [
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/favicon.ico': {'path': 'favicon.ico'},
-    'extra/_headers': {'path': '_headers'}
+    'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
 PLUGIN_PATHS = [THEME + '/plugins']

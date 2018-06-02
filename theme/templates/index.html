@@ -3,10 +3,8 @@
 {% block title %}{{ SITENAME }} | Home{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-2"></div>
+<div class="row justify-content-center">
     <section class="col-lg-8">
-        <h2 class="header light">Latest articles</h2>
         <main>
         {% for article in articles %}
             <article>
@@ -14,7 +12,7 @@
                     <a href="{{article.url}}">{{ article.title }}</a>
                 </h3>
                 <span class="published-date">
-                    # Published on {{ article.date | strftime('%m %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
+                    # Published on {{ article.date | strftime('%B %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
                 </span>
                 <p>{{ article.summary }}</p>
             </article>
@@ -24,6 +22,5 @@
         {% endfor %}
         </main>
     </section>
-    <div class="col-lg-2"></div>
 </div>
 {% endblock %}
