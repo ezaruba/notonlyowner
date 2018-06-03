@@ -14,11 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/litera/bootstrap.min.css" rel="stylesheet" integrity="sha384-+YpxMU1QQywaQtI3dMQAwIcu0vVDuOREjQPC59qblQHg9nTdcrUXMPnanUaldUnY" crossorigin="anonymous">    
-    {% assets filters="cssmin", output="css/style.min.css", "css/main.css", "css/pygments.css" %}
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />    
+    {% assets filters="cssmin", output="css/style.min.css", "css/bootstrap.min.css", "css/main.css", "css/pygments.css" %}
         <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}"/>
     {% endassets %}
 </head>

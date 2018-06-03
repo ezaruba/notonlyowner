@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Shadows Into Light';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Shadows Into Light'), local('ShadowsIntoLight'), url(https://fonts.gstatic.com/s/shadowsintolight/v7/UqyNK9UOIntux_czAvDQx_ZcHqZXBNQzdcD8.ttf) format('truetype');
+}
+
 body * {
     font-family: "Raleway", "Helvetica", "Arial", sans-serif;
     line-height: 1.5;
@@ -59,4 +66,8 @@ p, ol, ul, blockquote {
     font-style: italic;
     color: rgb(92, 92, 92);
     font-size: 1rem;
+}
+
+#article-title {
+    text-align: center;
 }
