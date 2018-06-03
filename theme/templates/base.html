@@ -15,7 +15,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />    
-    {% assets filters="cssmin", output="css/style.min.css", "css/bootstrap.min.css", "css/main.css", "css/pygments.css" %}
+    {% assets filters="cssmin", output="css/style.min.css", "../styles/bootstrap.min.css", "../styles/main.css", "../styles/pygments.css" %}
         <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}"/>
     {% endassets %}
 </head>
@@ -24,22 +24,24 @@
         <a class="navbar-brand" href="/">
             <img src="{{ SITEURL }}/images/black-cat.png" alt="Logo" class="d-inline-block">
             Hacking.mood
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>        
-        <div class="collapse navbar-collapse" id="navbar-items">
-            <ul class="navbar-nav ml-auto">
-                {% if DISPLAY_PAGES_ON_MENU -%}
-                {% for pg in pages %}
-                <li class="nav-item {% if pg == page %}active{% endif %}">
-                    <a class="nav-link" href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a>
-                </li>
-                {% endfor %}
-                {% endif %}
-            </ul>        
-        </div>
-    </nav>    
+        </a>        
+        <a href="#" class="menu-icon">
+            <svg viewBox="0 0 18 15">
+                <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+                <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+                <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+            </svg>
+        </a>        
+        <ul class="navbar-nav ml-auto trigger">
+            {% if DISPLAY_PAGES_ON_MENU -%}
+            {% for pg in pages %}
+            <li class="nav-item {% if pg == page %}active{% endif %}">
+                <a class="nav-link" href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a>
+            </li>
+            {% endfor %}
+            {% endif %}
+        </ul>        
+    </nav>
     <div class="container">
         {% block content %}
         {% endblock %}
@@ -50,7 +52,7 @@
             <div class="col-lg-12">
                 <p>
                     <br>
-                    Coded with <span style="color: #e25555;">&#9829;</span> using <a href="https://blog.getpelican.com/" rel="nofollow noopener" target="_blank">Pelican</a> and <a href="https://bootswatch.com/litera/" rel="nofollow" target="_blank">Litera</a>
+                    Built with <span style="color: #e25555;">&#9829;</span> using <a href="https://blog.getpelican.com/" rel="nofollow noopener" target="_blank">Pelican</a> and a pinch of <a href="https://bootswatch.com/litera/" rel="nofollow" target="_blank">Litera</a>
                     <br>
                     Badass cat icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" rel="nofollow noopener">www.flaticon.com</a> and is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
                     <br>

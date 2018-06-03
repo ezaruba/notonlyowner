@@ -71,3 +71,53 @@ p, ol, ul, blockquote {
 #article-title {
     text-align: center;
 }
+
+.navbar .menu-icon {
+    display: none;
+}
+
+.icon > svg {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.icon > svg path {
+    fill: #b9b9b9;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar .menu-icon {
+        display: block;
+        float: right;
+        width: 36px;
+        height: 26px;
+        line-height: 0;
+        padding-top: 10px;
+        text-align: center;
+    }
+    .navbar .menu-icon > svg {
+        width: 18px;
+        height: 15px
+    }
+    .navbar .menu-icon > svg path {
+        fill: #b9b9b9;
+    }
+    .navbar .trigger {
+        clear: both;
+        display: none;
+    }
+    .navbar:hover .trigger {
+        display: block;
+        padding-bottom: 5px;
+    }
+    .navbar .nav-link {
+        display: block;
+        padding: 5px 10px;
+        margin-left: 20px;
+    }
+    .navbar .nav-link:not(:last-child) {
+        margin-right: 0;
+    }
+}
+
