@@ -25,8 +25,8 @@ pre {
     padding: 0.1em 8px;
 }
 
-p, li {
-    font-size: 112%;
+p, li, pre span {
+    font-size: 110%;
     text-rendering: optimizeLegibility;
 }
 
