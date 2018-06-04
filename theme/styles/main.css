@@ -76,16 +76,6 @@ p, ol, ul, blockquote {
     display: none;
 }
 
-.icon > svg {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-}
-.icon > svg path {
-    fill: #b9b9b9;
-}
-
 @media screen and (max-width: 600px) {
     .navbar .menu-icon {
         display: block;
@@ -96,12 +86,9 @@ p, ol, ul, blockquote {
         padding-top: 10px;
         text-align: center;
     }
-    .navbar .menu-icon > svg {
+    .navbar .menu-icon > img {
         width: 18px;
         height: 15px
-    }
-    .navbar .menu-icon > svg path {
-        fill: #b9b9b9;
     }
     .navbar .trigger {
         clear: both;
