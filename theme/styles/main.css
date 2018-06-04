@@ -25,8 +25,8 @@ pre {
     padding: 0.1em 8px;
 }
 
-p, ol, ul, blockquote {
-    font-size: 115%;
+p, li {
+    font-size: 112%;
     text-rendering: optimizeLegibility;
 }
 
