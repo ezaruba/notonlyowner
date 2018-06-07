@@ -55,6 +55,10 @@ nav {
 .nav-toggle {
     display: none;
 }
+article {
+    word-wrap: break-word;
+    text-rendering: optimizeLegibility;
+}
 article > h2 {
     font-weight: 700;
     margin-bottom: 8px;
@@ -67,7 +71,6 @@ article aside {
 }
 article p {
     margin-top: 8px;
-    text-rendering: optimizeLegibility;
 }
 footer {
     text-align: center;
