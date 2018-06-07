@@ -3,24 +3,16 @@
 {% block title %}{{ SITENAME }} | Home{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <section class="col-lg-8">
-        <main>
-        {% for article in articles %}
-            <article>
-                <h3>
-                    <a href="{{article.url}}">{{ article.title }}</a>
-                </h3>
-                <span class="published-date">
-                    # Published on {{ article.date | strftime('%B %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
-                </span>
-                <p>{{ article.summary }}</p>
-            </article>
-            {% if not loop.last %}
-                <hr>
-            {% endif %}
-        {% endfor %}
-        </main>
-    </section>
-</div>
+{% for article in articles %}
+    <article>
+        <h2><a href="{{article.url}}">{{ article.title }}</a></h2>
+        <aside>
+            # {{ article.date | strftime('%B %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
+        </aside>
+        <p>{{ article.summary }}</p>
+    </article>
+    {% if not loop.last %}
+        <hr>
+    {% endif %}
+{% endfor %}        
 {% endblock %}

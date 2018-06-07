@@ -62,5 +62,4 @@ EXTRA_PATH_METADATA = {
 PLUGIN_PATHS = [THEME + '/plugins']
 PLUGINS = ['assets', 'post_stats']
 
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+GOOGLE_ANALYTICS = False

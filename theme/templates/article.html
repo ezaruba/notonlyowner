@@ -2,27 +2,13 @@
 
 {% block title %}{{ SITENAME }} | {{ article.title }}{% endblock %}
 
-{% block content %}
-<div class="row justify-content-center">
-    <div class="col-lg-8">
-        <main>
-            <article>
-                <h2 id="article-title">{{ article.title }}</h2>
-                <span class="published-date">
-                    # Published on {{ article.date | strftime('%B %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
-                </span>
-                <hr>
-                {{ article.content }}
-            </article>
-        </main>        
-        <hr>
-        <div id="disclaimer">
-            <p>                
-                As you may have guessed, I am light-years away from being an expert in Ethereum, Smart Contracts, Solidity, English grammar, and so on.
-                So, for all of you who know and understand a little more than what I do, please open an issue or even a pull request on
-                <a href="https://github.com/tinchoabbate/hackingmood" target="_blank" rel="noopener">hackingmood's repo</a> and help make this blog a little better. Thanks!.                
-            </p>            
-        </div>
-    </div>
-</div>
+{% block content %}        
+<article>
+    <h2 style="text-align: center;">{{ article.title }}</h2>
+    <aside>
+        # {{ article.date | strftime('%B %d, %Y')}} -- {{ article.stats['read_mins'] }} minutes read
+    </aside>
+    <hr>
+    {{ article.content }}
+</article>        
 {% endblock %}
