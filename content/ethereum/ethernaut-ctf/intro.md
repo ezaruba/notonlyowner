@@ -37,16 +37,16 @@ Create a new folder and inside it, run `truffle init`. Truffle will then create 
 Inside `truffle-config.js`, you can tell Truffle where is/are the blockchain(s) you want to use. As ours we'll be a local blockchain (the one ganache-cli runs), the truffle-config.js looks like this:
 
 ~~~javascript
-    /* truffle-config.js */
-    module.exports = {
-        networks: {
-            development: {
-                host: "127.0.0.1",
-                port: 8545, // Where ganache-cli listens
-                network_id: "*" // Matches any network id
-            }
+/* truffle-config.js */
+module.exports = {
+    networks: {
+        development: {
+            host: "127.0.0.1",
+            port: 8545, // Where ganache-cli listens
+            network_id: "*" // Matches any network id
         }
-    };
+    }
+};
 ~~~
 
 In `port`, write the local port in which you'll run the blockchain service. Ganache-cli listens on *8545* by default when you run `ganache-cli` on your terminal, but you can easily change that by running `ganache-cli --port <port-number>` instead.
@@ -62,6 +62,6 @@ For more advanced Truffle configurations and deeper explanations, refer to [Truf
 6. If everything went well, a `truffle(development)>` prompt should appear.
     - There, you could do `web3.eth.accounts` and hit enter. A JSON-formatted list of 10 public addresses should appear. Those are the 10 EOAs (the public addresses) that Ganache created for you.
 
-Okey, we are all set. In the next article, we will get our hands dirty and solve the first challenge: [Fallback](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank",:rel="noopener"}.
+Okey, we are all set. In the [next article](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-fallback/), we will get our hands dirty and solve the first challenge: [Fallback](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank",:rel="noopener"}.
 
 To do so, we will first walk through **the very basics of Solidity**, so we can then cover how to deploy the vulnerable smart contract to the local blockchain to start interacting with it. Finally, we will understand **why the Fallback contract is vulnerable** and how you can **exploit it** to pass the challenge.

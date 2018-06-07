@@ -14,6 +14,7 @@ Take a moment to *thoroughly* look at the contract's source code and try to find
 Need a hint ? Remember what we talked [about contract's constructors](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-fallback#constructors).
 
 Not quite there yet ? Observe the contract's name and the name of the *constructor*. Any difference ?
+
 ~~~solidity
 contract Fallout is Ownable {
     ...
