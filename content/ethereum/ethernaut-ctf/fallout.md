@@ -92,4 +92,4 @@ Aaand, challenge completed. That wasn't so hard, right ?
 
 Find the entire [exploit code of the Fallout contract at my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/fallout.exploit.js).
 
-If you enjoyed this challenge, stay tuned! In the next post we will dive into the problems of randomness in the Ethereum blockchain with the next challenge: [Coin Flip](https://ethernaut.zeppelin.solutions/level/0xd340de695bbc39e72df800dfde78a20d2ed94035).
+If you enjoyed this challenge, stay tuned! In the [next post](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-coinflip) we will dive into the problems of randomness in the Ethereum blockchain with the next challenge: [Coin Flip](https://ethernaut.zeppelin.solutions/level/0xd340de695bbc39e72df800dfde78a20d2ed94035).

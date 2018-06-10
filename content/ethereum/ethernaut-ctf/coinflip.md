@@ -1,5 +1,5 @@
 Title: Solving Zeppelin's Ethernaut CTF - Coinflip
-Date: 2018-06-07 10:00
+Date: 2018-06-10 10:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-coinflip
@@ -119,7 +119,7 @@ contract CoinFlipAttack {
 }
 ~~~
 
-In the `migrations/2_deploy_contracts.js` file include the necessary code to deploy both `CoinFlip` (if you haven't yet) and `CoinFlipAttack`.
+In the `migrations/2_deploy_contracts.js` file include the necessary code to deploy both `CoinFlip` (if you haven't yet) and `CoinFlipAttack`, the run `truffle migrate`.
 ~~~javascript
 let CoinFlip = artifacts.require('./CoinFlip.sol')
 let CoinFlipAttack = artifacts.require('./CoinFlipAttack.sol')
@@ -141,7 +141,10 @@ async function execute(callback) {
     // Instance victim and attacker contract
     let victimContract = await CoinFlipContract.deployed()
     let attackerContract = await CoinFlipAttackContract.deployed()
+
+    callback()
 }
+module.exports = execute
 ~~~
 
 First, let's set the victim's address in the attacker contract:
