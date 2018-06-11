@@ -116,4 +116,4 @@ Now run `truffle exec exploits/telephone.exploit.js` and that's it! Challenge pa
 
 See the [full code of the exploit](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/telephone.exploit.js) and the [attacker contract code](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/contracts/TelephoneAttack.sol).
 
-Thanks for reading!. For the next post, be ready to **steal some ethers** from a basic token contract and pass the [Token challenge](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"}.
+Thanks for reading!. For the [next post](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-token/), be ready to **steal some ethers** from a basic token contract and pass the [Token challenge](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"}.

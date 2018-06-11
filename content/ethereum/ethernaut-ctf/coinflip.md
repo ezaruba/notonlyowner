@@ -171,4 +171,4 @@ console.log(`Great! We won ${wins} times.`)
 
 Challenge completed! I acknowledge the post could have been much shorter. In fact, the exploit code is only 38 lines including comments. However, I wanted to fully explain the reasoning and fundamentals behind the exploit code. As always, you can [check the full code of the Coin Flip exploit in my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/coinflip.exploit.js){:rel="noopener"}.
 
-Following the Ethernaut CTF problems, in the next post (shorter, I promise), we will claim ownership of the [Telephone contract](https://ethernaut.zeppelin.solutions/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:rel="noopener"}. Thanks for reading!.
+Following the Ethernaut CTF problems, in the [next post](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-telephone/) (shorter, I promise), we claim ownership of the [Telephone contract](https://ethernaut.zeppelin.solutions/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:rel="noopener"}. Thanks for reading!.
