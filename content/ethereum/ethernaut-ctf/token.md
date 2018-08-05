@@ -90,4 +90,4 @@ That's it. After running `truffle exec exploits/token.exploit.js`, you should se
 
 You can also [find the exploit code at my Github repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/token.exploit.js). Although you might find some differences between the code in the repository and the one included in this post, the exploits work exactly the same. I made some changes to the exploit written here to make it simpler and clearer.
 
-Thanks for reading! In the next part of these series, we will tackle the [Delegation challenge](https://ethernaut.zeppelin.solutions/level/0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59){:rel="noopener"} and study the dangers of using a low-level call such as `delegatecall` in Solidity.
+Thanks for reading! In the [next part](https://hackingmood.com/solving-zeppelin-ethernaut-ctf-delegation) of these series, we will tackle the [Delegation challenge](https://ethernaut.zeppelin.solutions/level/0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59){:rel="noopener"} and study the dangers of using a low-level call such as `delegatecall` in Solidity.
