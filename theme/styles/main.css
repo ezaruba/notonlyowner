@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 body {
     font-size: 1.23em;
     line-height: 1.5em;
     padding: 0 2%;
-    font-family: 'Raleway', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
