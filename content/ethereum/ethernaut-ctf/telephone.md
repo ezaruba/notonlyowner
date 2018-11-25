@@ -26,7 +26,7 @@ function changeOwner(address _owner) public {
 ~~~
 Doesn't seem so difficult, except for that `if` clause. Let's see what it means.
 
-Among the available global variables in Solidity, there're two which can be a bit confusing at first: `msg.sender` and `tx.origin`. Up until now, we've only seen and used `msg.sender` to reference the caller's address. However, while [solving the Coinflip challenge](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-coinflip), we learned that public functions can be called both from 'outside' the blockchain (i.e. from an externally owned account) or 'inside' the blockchain (from another contract's code).
+Among the available global variables in Solidity, there're two which can be a bit confusing at first: `msg.sender` and `tx.origin`. Up until now, we've only seen and used `msg.sender` to reference the caller's address. However, while [solving the Coinflip challenge](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-coinflip), we learned that public functions can be called both from 'outside' the blockchain (i.e. from an externally owned account) or 'inside' the blockchain (from another contract's code).
 Moreover, we stated that while all **transactions** are originated by an EOA, contracts can send messages to each other, those messages being all included in the same transaction which triggered the whole call chain.
 
 As a result, in Solidity there are two different global variables to reference each of those cases. On the one hand, `msg.sender` references the actual caller (the last caller in the call chain) of the function. It could be an EOA or a contract address.
@@ -116,4 +116,4 @@ Now run `truffle exec exploits/telephone.exploit.js` and that's it! Challenge pa
 
 See the [full code of the exploit](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/telephone.exploit.js) and the [attacker contract code](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/contracts/TelephoneAttack.sol).
 
-Thanks for reading!. For the [next post](https://www.hackingmood.com/ethereum/solving-zeppelin-ethernaut-ctf-token/), be ready to **steal some ethers** from a basic token contract and pass the [Token challenge](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"}.
+Thanks for reading!. For the [next post](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-token/), be ready to **steal some ethers** from a basic token contract and pass the [Token challenge](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"}.
