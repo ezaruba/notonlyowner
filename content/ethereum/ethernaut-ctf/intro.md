@@ -16,11 +16,13 @@ Although the use of external tools is not strictly mandatory in all challenges, 
 ## Truffle & Ganache-cli
 In a nutshell, Ganache-cli simulates a local Ethereum blockchain (including 10 fake externally owned accounts (EOA), each with 100 ETH in their balance), while Truffle takes care (among other things) of compiling your Solidity contracts to EVM bytecode and deploy them to the any blockchain you configure (more on this later).
 
-So, before we dive into the challenges, let's first install Truffle and Ganache-cli as npm global dependencies. A simple `npm i -g truffle ganache-cli` should suffice, but if you have trouble doing so, please refer to either the [Truffle docs](http://truffleframework.com/) or [Ganache-cli docs](https://github.com/trufflesuite/ganache-cli).
+So, before we dive into the challenges, let's first install Truffle and Ganache-cli as npm global dependencies. A simple `npm i -g truffle@4.1.15 ganache-cli` should suffice, but if you have trouble doing so, please refer to either the [Truffle docs](http://truffleframework.com/) or [Ganache-cli docs](https://github.com/trufflesuite/ganache-cli).
+
+_**DECEMBER 2018 UPDATE:** Note that we're installing Truffle 4 and not Truffle 5. While the tutorials might also work with Truffle 5, I haven't had the time to properly test it, so for now let's keep using Truffle 4._
 
 ### Quick side note on Ethereum accounts
 I mentioned the term **externally owned accounts** before, so just to shed some light on that, this is how the [Ethereum docs](https://github.com/ethereum/wiki/wiki/Ethereum-Development-Tutorial#introduction) define them:
-> There are two types of accounts:
+There are two types of accounts:
 > 
 > - **Externally owned account (EOAs)**: an account controlled by a private key, and if you own the private key associated with the EOA you have the ability to send ether and messages from it.
 > - **Contract**: an account that has its own code, and is controlled by code.
@@ -54,7 +56,7 @@ In `port`, write the local port in which you'll run the blockchain service. Gana
 For more advanced Truffle configurations and deeper explanations, refer to [Truffle Configuration page](http://truffleframework.com/docs/advanced/configuration).
 
 ## Summing up
-1. `npm i -g truffle ganache-cli` (assuming you have [Node.js](https://nodejs.org){:target="_blank",:rel="noopener"} installed)
+1. `npm i -g truffle@4.1.15 ganache-cli` (assuming you have [Node.js](https://nodejs.org){:target="_blank",:rel="noopener"} installed)
 2. Create a folder to keep all our contracts and exploits: `mkdir ethernaut-ctf` and `cd ethernaut-ctf`
 3. Inside that folder, set up Truffle with `truffle init`
 4. Start Ganache with `ganache-cli`
