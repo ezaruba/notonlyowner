@@ -16,7 +16,7 @@ Although the use of external tools is not strictly mandatory in all challenges, 
 ## Truffle & Ganache-cli
 In a nutshell, Ganache-cli simulates a local Ethereum blockchain (including 10 fake externally owned accounts (EOA), each with 100 ETH in their balance), while Truffle takes care (among other things) of compiling your Solidity contracts to EVM bytecode and deploy them to the any blockchain you configure (more on this later).
 
-So, before we dive into the challenges, let's first install Truffle and Ganache-cli as npm dependencies. Inside a new folder, initialize npm with `npm init -y` and then install Truffle and Ganache-Cli. A simple `npm i -g truffle@4 ganache-cli@6` should suffice, but if you have trouble doing so, please refer to either the [Truffle docs](http://truffleframework.com/) or [Ganache-cli docs](https://github.com/trufflesuite/ganache-cli).
+So, before we dive into the challenges, let's first install Truffle and Ganache-cli as npm dependencies. Inside a new folder, initialize npm with `npm init -y` and then install Truffle and Ganache-Cli. A simple `npm i truffle@4 ganache-cli@6` should suffice, but if you have trouble doing so, please refer to either the [Truffle docs](http://truffleframework.com/) or [Ganache-cli docs](https://github.com/trufflesuite/ganache-cli).
 
 _**DECEMBER 2018 UPDATE:** Note that we're installing Truffle 4 and not Truffle 5. While the tutorials might also work with Truffle 5, I haven't had the time to properly test it, so for now let's keep using Truffle 4._
 
