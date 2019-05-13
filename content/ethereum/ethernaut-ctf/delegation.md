@@ -41,7 +41,7 @@ Whoever calls that `pwn` function, automatically becomes the owner of the contra
 Enough talk. Let's do it.
 
 ## Exploiting an unsafe delegatecall
-Include both Delegate.sol and Delegation.sol in your `contracts` folder. Then write the deployment scripts as follows and run `truffle migrate`:
+Include both Delegate.sol and Delegation.sol in your `contracts` folder. Then write the deployment scripts as follows and run `npx truffle migrate`:
 
 ~~~javascript
 let Delegate = artifacts.require('./Delegate.sol')
@@ -112,7 +112,7 @@ function encodeFunctionSignature(functionName) {
 You can check what that `web3` function is actually doing in here: [https://github.com/ethereum/web3.js/blob/1.0/packages/web3-eth-abi/src/index.js#L199](https://github.com/ethereum/web3.js/blob/1.0/packages/web3-eth-abi/src/index.js#L199){:rel="noopener"}
 
 
-All set! You can now call `truffle exec exploits/delegation.exploit.js`, pwn the Delegation contract, and finally become its owner!
+All set! You can now call `npx truffle exec exploits/delegation.exploit.js`, pwn the Delegation contract, and finally become its owner!
 
 Find the full exploit code at [https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/delegation.exploit.js](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/delegation.exploit.js){:rel="noopener"}.
 

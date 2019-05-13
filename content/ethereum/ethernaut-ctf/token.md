@@ -59,7 +59,7 @@ module.exports = deployer => {
 }
 ~~~
 
-Then run `truffle migrate`.
+Then run `npx truffle migrate`.
 
 ## The exploit
 In this case, the vulnerability is easy to exploit. The exploit consists of just calling the `transfer` function with a value greater than 20.
@@ -86,7 +86,7 @@ async function execute(callback) {
 module.exports = execute
 ~~~
 
-That's it. After running `truffle exec exploits/token.exploit.js`, you should see that the balance of the account if far greater than 20 tokens.
+That's it. After running `npx truffle exec exploits/token.exploit.js`, you should see that the balance of the account if far greater than 20 tokens.
 
 You can also [find the exploit code at my Github repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/token.exploit.js). Although you might find some differences between the code in the repository and the one included in this post, the exploits work exactly the same. I made some changes to the exploit written here to make it simpler and clearer.
 

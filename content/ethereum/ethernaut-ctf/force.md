@@ -85,7 +85,7 @@ I've added some comments to the exploit, though it is as self-explanatory as can
 
 The rest are just utilities to validate and log each step of the attack.
 
-So that's it! Make sure that you've deployed the Force contract to `ganache` before running the exploit with `truffle exec exploits/force.exploit.js`.
+So that's it! Make sure that you've deployed the Force contract to `ganache` before running the exploit with `npx truffle exec exploits/force.exploit.js`.
 
 Even though the challenge may have been a little basic, it taught us a new feature of smart contracts that we'd never seen before, which might come in handy at some point.
 

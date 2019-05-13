@@ -61,7 +61,7 @@ contract TelephoneAttack {
 }
 ~~~
 
-Once you added `Telephone.sol` and `TelephoneAttack.sol` to the `contracts` folder of your project, write the necessary code (see below) to deploy both of them to the blockchain in `migrations/2_deploy_contracts.js`. Then run `truffle migrate`.
+Once you added `Telephone.sol` and `TelephoneAttack.sol` to the `contracts` folder of your project, write the necessary code (see below) to deploy both of them to the blockchain in `migrations/2_deploy_contracts.js`. Then run `npx truffle migrate`.
 
 ~~~javascript
 let Telephone = artifacts.require('./Telephone.sol')
@@ -112,7 +112,7 @@ assert.equal(contractOwner, attackerAccount)
 console.log(`New owner ${contractOwner}`)
 ~~~
 
-Now run `truffle exec exploits/telephone.exploit.js` and that's it! Challenge passed.
+Now run `npx truffle exec exploits/telephone.exploit.js` and that's it! Challenge passed.
 
 See the [full code of the exploit](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/telephone.exploit.js) and the [attacker contract code](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/contracts/TelephoneAttack.sol).
 

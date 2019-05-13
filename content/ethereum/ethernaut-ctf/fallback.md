@@ -168,7 +168,7 @@ First, in the `contracts` folder create a file called `Fallback.sol`. Within tha
 
 In the root directory of your project (at the same level as the `contracts` folder) create a new folder called `exploits`. Inside it, create a new file `fallback.exploit.js`.
 
-Next, locate a file called `2_deploy_contracts.js` inside the `migrations` folder. Should the file not be there, create it. This file is used to tell Truffle which contracts are to be deployed to the network when the `truffle migrate` command is executed. As we want to deploy the `Fallback.sol` contract, let's include the following code:
+Next, locate a file called `2_deploy_contracts.js` inside the `migrations` folder. Should the file not be there, create it. This file is used to tell Truffle which contracts are to be deployed to the network when the `npx truffle migrate` command is executed. As we want to deploy the `Fallback.sol` contract, let's include the following code:
 
 ~~~javascript
 /* migrations/2_deploy_contracts.js */
@@ -181,7 +181,7 @@ module.exports = deployer => {
 
 Even though the above code is enough for now, you should refer to [Truffle's docs on Migrations](http://truffleframework.com/docs/getting_started/migrations) to gain more insights about the deployment scripts and how to exactly configure and use them.
 
-Ok, time to launch Ganache-cli! Fire up a new terminal and follow the instructions explained in the [introductory article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). Once done, open another terminal and, being in the root folder of the project, run `truffle migrate`. If everything went well, the output should be similar to:
+Ok, time to launch Ganache-cli! Fire up a new terminal and follow the instructions explained in the [introductory article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). Once done, open another terminal and, being in the root folder of the project, run `npx truffle migrate`. If everything went well, the output should be similar to:
 
 ~~~
 [...]
@@ -203,7 +203,7 @@ Now that the contract has been deployed, it is time to start interacting with it
 
 Remeber how in the [introductory article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro#summing-up) we launched the interactive development console of Truffle which let us 'talk' to our local blockchain ? You better forget about that useless piece of crap.
 
-Just kidding (: - but we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in JavaScript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/), which is already provided by Truffle as a global variable in our scripts as long as we launch them with `truffle exec <my-badass-script.js>` (so no need to `npm install` nor `require` anything, cool).
+Just kidding (: - but we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in JavaScript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/), which is already provided by Truffle as a global variable in our scripts as long as we launch them with `npx truffle exec <my-badass-script.js>`.
 
 Create a new folder `exploits` in the root directory of the project and a Javascript file called `fallback.exploit.js` inside the folder. Now, let's write the exploit.
 
@@ -330,7 +330,7 @@ let response = await contract.withdraw({
 console.log(`Withdrew all money in transaction ${response.tx}`)
 ~~~
 
-That's it!  You can now run `truffle exec exploits/fallback.exploit.js` to execute the exploit and pass the challenge.
+That's it!  You can now run `npx truffle exec exploits/fallback.exploit.js` to execute the exploit and pass the challenge.
 
 Find the entire [exploit code of the Fallback contract at my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/fallback.exploit.js).
 

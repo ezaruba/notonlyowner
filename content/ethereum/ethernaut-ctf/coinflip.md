@@ -119,7 +119,7 @@ contract CoinFlipAttack {
 }
 ~~~
 
-In the `migrations/2_deploy_contracts.js` file include the necessary code to deploy both `CoinFlip` (if you haven't yet) and `CoinFlipAttack`, the run `truffle migrate`.
+In the `migrations/2_deploy_contracts.js` file include the necessary code to deploy both `CoinFlip` (if you haven't yet) and `CoinFlipAttack`, the run `npx truffle migrate`.
 ~~~javascript
 let CoinFlip = artifacts.require('./CoinFlip.sol')
 let CoinFlipAttack = artifacts.require('./CoinFlipAttack.sol')
