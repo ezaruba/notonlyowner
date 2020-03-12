@@ -12,6 +12,7 @@ Quick facts about me:
 
 Other things I wrote:
 
+- [Backdooring Gnosis Safe Multisig wallets](https://blog.openzeppelin.com/backdooring-gnosis-safe-multisig-wallets)
 - [A Year of Research at OpenZeppelin](https://blog.openzeppelin.com/a-year-of-research-at-openzeppelin/)
 - [Deep dive into the Minimal Proxy contract](https://blog.openzeppelin.com/deep-dive-into-the-minimal-proxy-contract/)
 - [Exploiting Uniswap: from reentrancy to actual profit](https://blog.openzeppelin.com/exploiting-uniswap-from-reentrancy-to-actual-profit/)
