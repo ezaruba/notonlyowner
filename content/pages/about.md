@@ -23,3 +23,8 @@ I can speak too:
 
 - [Tactics for the defense of smart contracts in Ethereum @ Blockchain Summit LATAM 2019](https://www.youtube.com/watch?v=947zkS_5-hk) (in Spanish)
 - [Smart contract security @ Ethereum BA Meetup](https://www.youtube.com/watch?v=S1fK-i9RoE8) (in Spanish): the time when the one and only Andreas Antonopoulos warmed up the stage for me.
+
+And I code:
+
+- [Damn Vulnerable Crypto Wallet](https://gitlab.com/badbounty/dvcw)
+- [GitHub profile](https://github.com/tinchoabbate)
