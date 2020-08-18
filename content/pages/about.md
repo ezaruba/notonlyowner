@@ -23,7 +23,7 @@ Other things I wrote:
 
 I can speak too:
 
-- [DEF CON Safe Mode - 7 Phases of Smart Contract Hacking](https://www.youtube.com/watch?v=gGUOjtri4n8)
+- [7 Phases of Smart Contract Hacking @ DEF CON Safe Mode Blockchain Village](https://www.youtube.com/watch?v=gGUOjtri4n8)
 - [Tactics for the defense of smart contracts in Ethereum @ Blockchain Summit LATAM 2019](https://www.youtube.com/watch?v=947zkS_5-hk) (in Spanish)
 - [Smart contract security @ Ethereum BA Meetup](https://www.youtube.com/watch?v=S1fK-i9RoE8) (in Spanish): the time when the one and only Andreas Antonopoulos warmed up the stage for me.
 
