@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Coinflip
+Title: Solving OpenZeppelin's Ethernaut CTF - Coinflip
 Date: 2018-06-10 10:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-coinflip
-Summary: Fourth post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. Through solving Coinflip, we learn how to exploit a common case of a poorly implemented PRNG in the Ethereum blockchain.
+Summary: Fourth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. Through solving Coinflip, we learn how to exploit a common case of a poorly implemented PRNG in the Ethereum blockchain.
 
 ## Introduction
 The [Coinflip challenge](https://ethernaut.zeppelin.solutions/level/0xd340de695bbc39e72df800dfde78a20d2ed94035){:rel="noopener"} is an excellent example of how *not* to implement a Pseudo Random Number Generator (PRNG from now on) in the Ethereum blockchain. But hey, that is no easy task - sources of bullet-proof randomness (if those even actually exist) are pretty scarce in a deterministic environment such as the Ethereum blockchain.

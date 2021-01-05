@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Fallout
+Title: Solving OpenZeppelin's Ethernaut CTF - Fallout
 Date: 2018-06-01 10:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-fallout
-Summary: Third post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this one, we solve the second challenge: Fallout.
+Summary: Third post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this one, we solve the second challenge: Fallout.
 
 ## Introduction
 While in the [Introduction](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/) of this series we setup the environment with Ganache-cli and Truffle, in the [second article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-fallback/) we walked through deploying our first smart contract, the basics of Solidity and Web3 and finally found a way to become the owners of the Fallback contract, thus passing the first challenge. Now, we will solve the second one: [Fallout](https://ethernaut.zeppelin.solutions/level/0x220beee334f1c1f8078352d88bcc4e6165b792f6).

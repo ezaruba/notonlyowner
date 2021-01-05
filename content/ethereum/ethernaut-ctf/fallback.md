@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Fallback
+Title: Solving OpenZeppelin's Ethernaut CTF - Fallback
 Date: 2018-05-31 23:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-fallback
-Summary: Second post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this article, after explaining the Solidity and Web3 basics by examples, we solve the first challenge: Fallback.
+Summary: Second post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this article, after explaining the Solidity and Web3 basics by examples, we solve the first challenge: Fallback.
 
 ## Introduction
 In this post, we are going to solve the first challenge in the Ethernaut CTF: **Fallback**. This challenge is closer to an introduction to 
@@ -43,7 +43,7 @@ If you ever declared a class in some other programming language, this should sou
 Our contract, Fallback, inherits the attributes and functions from Ownable. Bear in mind that Solidity supports multiple inheritance, and that **the order in which you write the 'parent' contracts matters** (but that is a whole other story that you should not worry about, at least for now).
 
 ### Ownable
-But, the fuck is Ownable ?. Well, go and check out the code for yourself at [Zeppelin's repo](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol). As the docs say, it main goal is to simplify the tasks related to user authorization. 
+But, the fuck is Ownable ?. Well, go and check out the code for yourself at [OpenZeppelin's repo](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol). As the docs say, it main goal is to simplify the tasks related to user authorization. 
 
 Any contract that inherits from Ownable will have an [owner address](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/746673a94f7e43835fcb5cb7b1af8ff1eea4e276/contracts/ownership/Ownable.sol#L10) with the necessary permissions to execute some of the contract's functions, preventing any other account from calling them. Those functions *must* be labeled with the modifier [onlyOwner](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/746673a94f7e43835fcb5cb7b1af8ff1eea4e276/contracts/ownership/Ownable.sol#L31).
 
@@ -162,7 +162,7 @@ At this point, I imagine you're as fed up with this whole Solidity theory as I a
 ## Deploying your first smart contract
 After studying the whole Fallback contract code, we found a way to become the owners. Now, how do we do actually do it?.
 
-Although the Zeppelin's guys provide us with an already set up interactive in-browser platform, I found it far more enriching to the learning process to set up my own local test environment using the tools we saw in the [first article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). So that is what we are going to do.
+Although the OpenZeppelin's guys provide us with an already set up interactive in-browser platform, I found it far more enriching to the learning process to set up my own local test environment using the tools we saw in the [first article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). So that is what we are going to do.
 
 First, in the `contracts` folder create a file called `Fallback.sol`. Within that file, paste the [source code of the Fallback contract](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7). Save and close.
 

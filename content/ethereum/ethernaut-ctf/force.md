@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Force
+Title: Solving OpenZeppelin's Ethernaut CTF - Force
 Date: 2018-11-23 23:30
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-force
-Summary: Post #8 of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. All contracts have a hidden self-destruct button. Did you known that? Read on, and see it for yourself.
+Summary: Post #8 of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. All contracts have a hidden self-destruct button. Did you known that? Read on, and see it for yourself.
 
 ## Introduction
 In [Force](https://ethernaut.zeppelin.solutions/level/0x24d661beb31b85a7d775272d7841f80e662c283b), we need to make the balance of the Force contract greater than zero. In previous challenges we learned how to send transactions to contracts both from other contracts or using the `web3` library. Along these transactions, we would be allowed to send ether as long as the transferee had some kind of `payable` function (be it the constructor, a custom one and/or the fallback).

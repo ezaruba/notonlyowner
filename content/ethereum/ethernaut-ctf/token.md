@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Token
+Title: Solving OpenZeppelin's Ethernaut CTF - Token
 Date: 2018-06-10 22:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-token
-Summary: Sixth post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In Token, we hack a basic token contract and manage our way to earn a huge amount of ethers.
+Summary: Sixth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In Token, we hack a basic token contract and manage our way to earn a huge amount of ethers.
 
 ## Introduction
 The [Token contract](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"} simulates a basic token built on the Ethereum blockchain. It is not a full [ERC20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard), but hey, you gotta start somewhere. Our main goal is to 'steal' as many tokens as we can from the contract, so let's dive right into it.

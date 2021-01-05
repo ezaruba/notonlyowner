@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Delegation
+Title: Solving OpenZeppelin's Ethernaut CTF - Delegation
 Date: 2018-08-05 16:00
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-delegation
-Summary: Post #7 of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In Delegation, we study how to exploit a trustful contract that uses a not-so-safe low-level call.
+Summary: Post #7 of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In Delegation, we study how to exploit a trustful contract that uses a not-so-safe low-level call.
 
 ## Introduction
 If you haven't realized by now, let me tell you something, Solidity's low-level calls are definitely not your best friends. I'm talking about `call`, `callcode` and `delegatecall`. They can be deceiving, as we've already seen in [Fallback](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-fallback/). That's the reason why many static analyzers will raise an alarm whenever any of them is found. I'm not saying you shouldn't use them - they exist for a reason - but, beware.

@@ -1,17 +1,17 @@
-Title: Solving Zeppelin's Ethernaut CTF - Intro
+Title: Solving OpenZeppelin's Ethernaut CTF - Intro
 Date: 2018-05-19 18:30
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-intro
-Summary: First post of a series in which we will tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this first article, we prepare the environment with Truffle and Ganache-cli.
+Summary: First post of a series in which we will tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this first article, we prepare the environment with Truffle and Ganache-cli.
 
 ## Introduction
-In this series of posts, I will cover the challenges included in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In the process,
+In this series of posts, I will cover the challenges included in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In the process,
 I'll be explaining the Ethereum and Solidity fundamentals that are needed to solve each challenge, along with the code necessary to exploit the vulnerabilities found in the smart contracts.
 
-I assume that you have some basic knowledge of what Ethereum and Smart Contracts are. If you don't, well, Zeppelin happens to have [a series of posts explaining the basics and not-so-basics of the Ethereum platform](https://blog.zeppelin.solutions/a-gentle-introduction-to-ethereum-programming-part-1-783cc7796094).
+I assume that you have some basic knowledge of what Ethereum and Smart Contracts are. If you don't, well, OpenZeppelin happens to have [a series of posts explaining the basics and not-so-basics of the Ethereum platform](https://blog.zeppelin.solutions/a-gentle-introduction-to-ethereum-programming-part-1-783cc7796094).
 
-Although the use of external tools is not strictly mandatory in all challenges, I found it easier and better to use Truffle and Ganache-cli (formerly known as TestRPC) in my local computer instead of using the platform provided by Zeppelin to solve the challenges through the browser's console.
+Although the use of external tools is not strictly mandatory in all challenges, I found it easier and better to use Truffle and Ganache-cli (formerly known as TestRPC) in my local computer instead of using the platform provided by OpenZeppelin to solve the challenges through the browser's console.
 
 ## Truffle & Ganache-cli
 In a nutshell, Ganache-cli simulates a local Ethereum blockchain (including 10 fake externally owned accounts (EOA), each with 100 ETH in their balance), while Truffle takes care (among other things) of compiling your Solidity contracts to EVM bytecode and deploy them to the any blockchain you configure (more on this later).

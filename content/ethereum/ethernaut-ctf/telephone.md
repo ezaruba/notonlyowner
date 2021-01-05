@@ -1,9 +1,9 @@
-Title: Solving Zeppelin's Ethernaut CTF - Telephone
+Title: Solving OpenZeppelin's Ethernaut CTF - Telephone
 Date: 2018-06-10 18:20
 Tags: ethereum, solidity, ctf, smart contracts
 Category: Ethereum
 Slug: solving-zeppelin-ethernaut-ctf-telephone
-Summary: Fifth post of a series in which we tackle the challenges in the [Ethernaut CTF by Zeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. We claim ownership of the Telephone contract by first understanding the difference between the sender and origin of Ethereum transactions.
+Summary: Fifth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. We claim ownership of the Telephone contract by first understanding the difference between the sender and origin of Ethereum transactions.
 
 ## Introduction
 The Telephone contract challenge is far from being the hardest or most complex of all, but through solving it we will dig a bit deeper in how Ethereum works internally. Not so much to say here, so just go and [read the challenge](https://ethernaut.zeppelin.solutions/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:target="_blank",:rel="noopener"}.
