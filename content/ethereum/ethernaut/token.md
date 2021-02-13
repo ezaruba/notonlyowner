@@ -1,12 +1,11 @@
 Title: Solving OpenZeppelin's Ethernaut CTF - Token
-Date: 2018-06-10 22:00
+Date: 2018-06-10
 Tags: ethereum, solidity, ctf, smart contracts
-Category: Ethereum
-Slug: solving-zeppelin-ethernaut-ctf-token
-Summary: Sixth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In Token, we hack a basic token contract and manage our way to earn a huge amount of ethers.
+Slug: token-challenge-solution
+Summary: Sixth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.openzeppelin.com/){:target="_blank",:rel="noopener"}. In Token, we hack a basic token contract and manage our way to earn a huge amount of ethers.
 
 ## Introduction
-The [Token contract](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"} simulates a basic token built on the Ethereum blockchain. It is not a full [ERC20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard), but hey, you gotta start somewhere. Our main goal is to 'steal' as many tokens as we can from the contract, so let's dive right into it.
+The [Token contract](https://ethernaut.openzeppelin.com/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"} simulates a basic token built on the Ethereum blockchain. It is not a full [ERC20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard), but hey, you gotta start somewhere. Our main goal is to 'steal' as many tokens as we can from the contract, so let's dive right into it.
 
 ## The Token contract
 The contract is deployed with some initial supply of tokens, as you can see in its constructor. That initial supply is both set as the total supply of tokens and saved as the balance of the contract's deployer.
@@ -90,4 +89,4 @@ That's it. After running `npx truffle exec exploits/token.exploit.js`, you shoul
 
 You can also [find the exploit code at my Github repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/token.exploit.js). Although you might find some differences between the code in the repository and the one included in this post, the exploits work exactly the same. I made some changes to the exploit written here to make it simpler and clearer.
 
-Thanks for reading! In the [next part](https://notonlyowner.com/solving-zeppelin-ethernaut-ctf-delegation) of these series, we will tackle the [Delegation challenge](https://ethernaut.zeppelin.solutions/level/0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59){:rel="noopener"} and study the dangers of using a low-level call such as `delegatecall` in Solidity.
+Thanks for reading! In the [next part](https://notonlyowner.com/solving-openzeppelin-ethernaut-ctf-delegation) of these series, we will tackle the [Delegation challenge](https://ethernaut.openzeppelin.com/level/0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59){:rel="noopener"} and study the dangers of using a low-level call such as `delegatecall` in Solidity.

@@ -1,12 +1,11 @@
 Title: Solving OpenZeppelin's Ethernaut CTF - Coinflip
-Date: 2018-06-10 10:00
+Date: 2018-06-10
 Tags: ethereum, solidity, ctf, smart contracts
-Category: Ethereum
-Slug: solving-zeppelin-ethernaut-ctf-coinflip
-Summary: Fourth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. Through solving Coinflip, we learn how to exploit a common case of a poorly implemented PRNG in the Ethereum blockchain.
+Slug: coinflip-challenge-solution
+Summary: Fourth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.openzeppelin.com/){:target="_blank",:rel="noopener"}. Through solving Coinflip, we learn how to exploit a common case of a poorly implemented PRNG in the Ethereum blockchain.
 
 ## Introduction
-The [Coinflip challenge](https://ethernaut.zeppelin.solutions/level/0xd340de695bbc39e72df800dfde78a20d2ed94035){:rel="noopener"} is an excellent example of how *not* to implement a Pseudo Random Number Generator (PRNG from now on) in the Ethereum blockchain. But hey, that is no easy task - sources of bullet-proof randomness (if those even actually exist) are pretty scarce in a deterministic environment such as the Ethereum blockchain.
+The [Coinflip challenge](https://ethernaut.openzeppelin.com/level/0xd340de695bbc39e72df800dfde78a20d2ed94035){:rel="noopener"} is an excellent example of how *not* to implement a Pseudo Random Number Generator (PRNG from now on) in the Ethereum blockchain. But hey, that is no easy task - sources of bullet-proof randomness (if those even actually exist) are pretty scarce in a deterministic environment such as the Ethereum blockchain.
 
 Because of that, as of today, the most common way of securely flipping coins on the blockchain is to actually not do it on it. Instead, a common practice is to **trust** a third party who can flip the coins for us. Yeah, I know. Can we trust the third party ? Isn't **trustless** one of the core concepts of Ethereum (and other similar decentralized technologies) ? Bit of a trade-off there.
 
@@ -22,7 +21,7 @@ My approach to tackle this challenge (all of them actually) was:
 6. Iterate. Always remember: it is a CTF challenge, it **MUST** have a solution, be patient, you just need to dig a bit deeper.
 
 ### The Coin Flip contract
-Have you checked [CoinFlip's code](https://ethernaut.zeppelin.solutions/level/0xd340de695bbc39e72df800dfde78a20d2ed94035){:rel="noopener"} yet ? Hope you have. Let's analyze it.
+Have you checked [CoinFlip's code](https://ethernaut.openzeppelin.com/level/0xd340de695bbc39e72df800dfde78a20d2ed94035){:rel="noopener"} yet ? Hope you have. Let's analyze it.
 
 The constructor does nothing fancy, it just initializes the number of consecutive wins to 0. The public variable `consecutiveWins` is the one we will call at the end of our exploit to make sure we passed the challenge.
 
@@ -130,7 +129,7 @@ module.exports = deployer => {
 }
 ~~~
 
-Now create the exploit file, such as `exploits/coinflip.exploit.js`, and follow the structure of our previous exploits (check [Fallout](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-fallout/) and [Fallback](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-fallback/) posts for a refresh)
+Now create the exploit file, such as `exploits/coinflip.exploit.js`, and follow the structure of our previous exploits (check [Fallout]({filename}fallout.md) and [Fallback]({filename}fallback.md) posts for a refresh)
 
 ~~~javascript
 const CoinFlipContract = artifacts.require('CoinFlip')
@@ -171,4 +170,4 @@ console.log(`Great! We won ${wins} times.`)
 
 Challenge completed! I acknowledge the post could have been much shorter. In fact, the exploit code is only 38 lines including comments. However, I wanted to fully explain the reasoning and fundamentals behind the exploit code. As always, you can [check the full code of the Coin Flip exploit in my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/coinflip.exploit.js){:rel="noopener"}.
 
-Following the Ethernaut CTF problems, in the [next post](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-telephone/) (shorter, I promise), we claim ownership of the [Telephone contract](https://ethernaut.zeppelin.solutions/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:rel="noopener"}. Thanks for reading!.
+Following the Ethernaut CTF problems, in the [next post]({filename}telephone.md) (shorter, I promise), we claim ownership of the [Telephone contract](https://ethernaut.openzeppelin.com/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:rel="noopener"}. Thanks for reading!.

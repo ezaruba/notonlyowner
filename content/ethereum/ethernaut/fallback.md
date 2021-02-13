@@ -1,15 +1,14 @@
 Title: Solving OpenZeppelin's Ethernaut CTF - Fallback
-Date: 2018-05-31 23:00
+Date: 2018-05-31
 Tags: ethereum, solidity, ctf, smart contracts
-Category: Ethereum
-Slug: solving-zeppelin-ethernaut-ctf-fallback
-Summary: Second post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In this article, after explaining the Solidity and Web3 basics by examples, we solve the first challenge: Fallback.
+Slug: fallback-challenge-solution
+Summary: Second post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.openzeppelin.com/){:target="_blank",:rel="noopener"}. In this article, after explaining the Solidity and Web3 basics by examples, we solve the first challenge: Fallback.
 
 ## Introduction
 In this post, we are going to solve the first challenge in the Ethernaut CTF: **Fallback**. This challenge is closer to an introduction to 
 experimenting with the platform and get comfortable with it than a real exploiting challenge, I know. Nevertheless, it's a good way to kickstart the CTF, and for us, to start digging into Solidity, Web3, Ethereum, and many other concepts.
 
-First of all, go to [the Fallback page](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank",:rel="noopener"} and read the challenge, even though you may not understand a thing of what it says at first. At the bottom, there's the Smart Contract code, written in Solidity. Check it out too, don't be lazy. At least try to grasp what the contract is supposed to accomplish by reading the function names.
+First of all, go to [the Fallback page](https://ethernaut.openzeppelin.com/level/0x234094aac85628444a82dae0396c680974260be7){:target="_blank",:rel="noopener"} and read the challenge, even though you may not understand a thing of what it says at first. At the bottom, there's the Smart Contract code, written in Solidity. Check it out too, don't be lazy. At least try to grasp what the contract is supposed to accomplish by reading the function names.
 
 Ready? Ok, let's break it down.
 
@@ -162,9 +161,9 @@ At this point, I imagine you're as fed up with this whole Solidity theory as I a
 ## Deploying your first smart contract
 After studying the whole Fallback contract code, we found a way to become the owners. Now, how do we do actually do it?.
 
-Although the OpenZeppelin's guys provide us with an already set up interactive in-browser platform, I found it far more enriching to the learning process to set up my own local test environment using the tools we saw in the [first article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). So that is what we are going to do.
+Although the OpenZeppelin's guys provide us with an already set up interactive in-browser platform, I found it far more enriching to the learning process to set up my own local test environment using the tools we saw in the [first article]({filename}intro.md). So that is what we are going to do.
 
-First, in the `contracts` folder create a file called `Fallback.sol`. Within that file, paste the [source code of the Fallback contract](https://ethernaut.zeppelin.solutions/level/0x234094aac85628444a82dae0396c680974260be7). Save and close.
+First, in the `contracts` folder create a file called `Fallback.sol`. Within that file, paste the [source code of the Fallback contract](https://ethernaut.openzeppelin.com/level/0x234094aac85628444a82dae0396c680974260be7). Save and close.
 
 In the root directory of your project (at the same level as the `contracts` folder) create a new folder called `exploits`. Inside it, create a new file `fallback.exploit.js`.
 
@@ -181,7 +180,7 @@ module.exports = deployer => {
 
 Even though the above code is enough for now, you should refer to [Truffle's docs on Migrations](http://truffleframework.com/docs/getting_started/migrations) to gain more insights about the deployment scripts and how to exactly configure and use them.
 
-Ok, time to launch Ganache-cli! Fire up a new terminal and follow the instructions explained in the [introductory article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro/). Once done, open another terminal and, being in the root folder of the project, run `npx truffle migrate`. If everything went well, the output should be similar to:
+Ok, time to launch Ganache-cli! Fire up a new terminal and follow the instructions explained in the [introductory article]({filename}intro.md). Once done, open another terminal and, being in the root folder of the project, run `npx truffle migrate`. If everything went well, the output should be similar to:
 
 ~~~
 [...]
@@ -201,7 +200,7 @@ Now that the contract has been deployed, it is time to start interacting with it
 
 ## Enter Web3
 
-Remeber how in the [introductory article](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-intro#summing-up) we launched the interactive development console of Truffle which let us 'talk' to our local blockchain ? You better forget about that useless piece of crap.
+Remeber how in the [introductory article]({filename}intro.md) we launched the interactive development console of Truffle which let us 'talk' to our local blockchain ? You better forget about that useless piece of crap.
 
 Just kidding (: - but we won't be using it for now. Instead, we will be using Truffle's `exec` command to launch our own external scripts to exploit the contracts vulnerabilities. These scripts will be written in JavaScript, using the de-facto standard [Web3 API](https://github.com/ethereum/web3.js/), which is already provided by Truffle as a global variable in our scripts as long as we launch them with `npx truffle exec <my-badass-script.js>`.
 
@@ -335,4 +334,4 @@ That's it!  You can now run `npx truffle exec exploits/fallback.exploit.js` to e
 Find the entire [exploit code of the Fallback contract at my GitHub repo](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/fallback.exploit.js).
 
 
-If you enjoyed this first challenge, stay tuned! In the [next post](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-fallout/) we will be tackling the next one: [Fallout](https://ethernaut.zeppelin.solutions/level/0x220beee334f1c1f8078352d88bcc4e6165b792f6).
+If you enjoyed this first challenge, stay tuned! In the [next post]({filename}fallout.md) we will be tackling the next one: [Fallout](https://ethernaut.openzeppelin.com/level/0x220beee334f1c1f8078352d88bcc4e6165b792f6).

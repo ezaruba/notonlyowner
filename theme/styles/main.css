@@ -10,26 +10,28 @@ body {
     -o-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
+    background-color: #fff7f4;
+    color: #2D2828;
 }
 main { 
-    max-width: 35em;
+    max-width: 40em;
     margin: auto;
 }
 a {
-    text-decoration: none;
-    color: #0366d6;
+    text-decoration: underline;
+    color: #201d1d;
 }
 a:hover {
     text-decoration: underline;
-    color: #1559cf;
+    color: #0f1011;
 }
-strong { color: #2c2c54; }
+strong { color: #241919; font-weight: 800; }
 hr { border:0; border-top: 1px solid rgba(0,0,0,0.1); }
 header { font-size: 1.1rem; margin: 0; padding: 0; overflow: hidden; }
-header a {
+header a, h2 a {
     display: block;            
     text-align: center;
-    padding: .5rem 1rem;
+    padding: .6rem .8rem;
     text-decoration: none;
     color: rgba(0,0,0,0.5);
     text-transform: uppercase;
@@ -85,6 +87,19 @@ pre {
     overflow: auto;
     padding: .1em 10px;
 }
+pre code {
+    background-color: inherit;
+}
+code {
+    background-color: antiquewhite;
+    font-size: 1.1rem;
+}
+ul {
+    list-style: circle;
+    line-height: 1.7em;
+}
+
+
 @media screen and (max-width: 420px) {
     .nav-menu {
         position: absolute;

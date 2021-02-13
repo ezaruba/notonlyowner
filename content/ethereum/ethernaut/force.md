@@ -1,12 +1,11 @@
 Title: Solving OpenZeppelin's Ethernaut CTF - Force
-Date: 2018-11-23 23:30
+Date: 2018-11-23
 Tags: ethereum, solidity, ctf, smart contracts
-Category: Ethereum
-Slug: solving-zeppelin-ethernaut-ctf-force
-Summary: Post #8 of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. All contracts have a hidden self-destruct button. Did you known that? Read on, and see it for yourself.
+Slug: force-challenge-solution
+Summary: Post #8 of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.openzeppelin.com/){:target="_blank",:rel="noopener"}. All contracts have a hidden self-destruct button. Did you known that? Read on, and see it for yourself.
 
 ## Introduction
-In [Force](https://ethernaut.zeppelin.solutions/level/0x24d661beb31b85a7d775272d7841f80e662c283b), we need to make the balance of the Force contract greater than zero. In previous challenges we learned how to send transactions to contracts both from other contracts or using the `web3` library. Along these transactions, we would be allowed to send ether as long as the transferee had some kind of `payable` function (be it the constructor, a custom one and/or the fallback).
+In [Force](https://ethernaut.openzeppelin.com/level/0x24d661beb31b85a7d775272d7841f80e662c283b), we need to make the balance of the Force contract greater than zero. In previous challenges we learned how to send transactions to contracts both from other contracts or using the `web3` library. Along these transactions, we would be allowed to send ether as long as the transferee had some kind of `payable` function (be it the constructor, a custom one and/or the fallback).
 
 However, the Force contract does not have any code. I mean, **none**. How are we supposed to deposit Ether into it ? Well, luckily, we have an ace under the sleeve.
 
@@ -79,16 +78,18 @@ module.exports = execute
 
 I've added some comments to the exploit, though it is as self-explanatory as can be:
 
-- Deploy the attacker contract
-- Call `destruct` function
-- Pass challenge :)
+1. Deploy the attacker contract
+2. Call the `destruct` function
+3. Pass challenge
 
 The rest are just utilities to validate and log each step of the attack.
 
-So that's it! Make sure that you've deployed the Force contract to `ganache` before running the exploit with `npx truffle exec exploits/force.exploit.js`.
+So that's it!
+
+Make sure that you've deployed the Force contract to `ganache` before running the exploit with `npx truffle exec exploits/force.exploit.js`.
 
 Even though the challenge may have been a little basic, it taught us a new feature of smart contracts that we'd never seen before, which might come in handy at some point.
 
 You can find the whole [exploit](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/force.exploit.js) and the [attacker contract](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/contracts/ForceAttack.sol) at the GitHub repo.
 
-For the next post, be ready to do some Ethereum lockpicking, because we are gonna have to unlock [Vault](https://ethernaut.zeppelin.solutions/level/0xe77b0bea3f019b1df2c9663c823a2ae65afb6a5f). 
+For the next post, be ready to do some Ethereum lockpicking, because we are gonna have to unlock a [Vault](https://ethernaut.openzeppelin.com/level/0xe77b0bea3f019b1df2c9663c823a2ae65afb6a5f). 

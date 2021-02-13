@@ -1,42 +1,42 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+#!/usr/bin/env python3
 
-AUTHOR = 'Martin Abbatemarco'
 SITENAME = 'Notonlyowner'
-SITEURL = ''
+SITEURL = 'https://notonlyowner.com'
 
+# Path to content directory to be processed by Pelican
 PATH = 'content'
 
-TIMEZONE = 'America/Buenos_Aires'
+# A list of directories and files to look at for pages, relative to `PATH`
+PAGE_PATHS = ['pages']
 
-LOCALE = 'en_US'
-
-DEFAULT_LANG = 'en'
+RELATIVE_URLS = True
 
 THEME = 'theme'
 
-# Feed generation is usually not desired when developing
+DEFAULT_LANG = 'en'
+LOCALE = 'en_US'
+
+CATEGORY_SAVE_AS = False
+
+DIRECT_TEMPLATES = ['index']
+
+USE_FOLDER_AS_CATEGORY = True
+CATEGORY_URL = '{slug}.html'
+CATEGORY_SAVE_AS = '{slug}.html'
+
+AUTHOR_SAVE_AS = False
+TAG_SAVE_AS = False
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-AUTHOR_SAVE_AS = False
-CATEGORY_SAVE_AS = False
-TAG_SAVE_AS = False
-DIRECT_TEMPLATES = ['index']
-
-# URL Settings (https://github.com/getpelican/pelican/blob/master/docs/settings.rst#url-settings)
 ARTICLE_URL = '{category}/{slug}/'
 ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
-DEFAULT_PAGINATION = 10
-
-# Markdown config
 MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
@@ -59,7 +59,4 @@ EXTRA_PATH_METADATA = {
     'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
-PLUGIN_PATHS = [THEME + '/plugins']
-PLUGINS = ['assets', 'post_stats']
-
-GOOGLE_ANALYTICS = False
+PLUGINS = ['pelican_webassets']

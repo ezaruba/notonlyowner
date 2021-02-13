@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} | {{ category.name }} {% endblock %}
+
+{% block content %}
+{% for article in articles %}
+    <article>
+        <h2><a href="{{article.url}}">{{ article.title }}</a></h2>
+        <aside>
+            # {{ article.date | strftime('%B %d, %Y') }}
+        </aside>
+        <p>{{ article.summary }}</p>
+    </article>
+    {% if not loop.last %}
+        <hr>
+    {% endif %}
+{% endfor %}        
+{% endblock %}

@@ -1,14 +1,13 @@
 Title: Solving OpenZeppelin's Ethernaut CTF - Delegation
-Date: 2018-08-05 16:00
+Date: 2018-08-05
 Tags: ethereum, solidity, ctf, smart contracts
-Category: Ethereum
-Slug: solving-zeppelin-ethernaut-ctf-delegation
-Summary: Post #7 of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. In Delegation, we study how to exploit a trustful contract that uses a not-so-safe low-level call.
+Slug: delegation-challenge-solution
+Summary: Post #7 of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.openzeppelin.com/){:target="_blank",:rel="noopener"}. In Delegation, we study how to exploit a trustful contract that uses a not-so-safe low-level call.
 
 ## Introduction
-If you haven't realized by now, let me tell you something, Solidity's low-level calls are definitely not your best friends. I'm talking about `call`, `callcode` and `delegatecall`. They can be deceiving, as we've already seen in [Fallback](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-fallback/). That's the reason why many static analyzers will raise an alarm whenever any of them is found. I'm not saying you shouldn't use them - they exist for a reason - but, beware.
+If you haven't realized by now, let me tell you something, Solidity's low-level calls are definitely not your best friends. I'm talking about `call`, `callcode` and `delegatecall`. They can be deceiving, as we've already seen in [Fallback]({filename}fallback.md). That's the reason why many static analyzers will raise an alarm whenever any of them is found. I'm not saying you shouldn't use them - they exist for a reason - but, beware.
 
-Now go take a look at the [Delegation challenge](https://ethernaut.zeppelin.solutions/level/0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59){:target="_blank",:rel="noopener"} and come back once you're done.
+Now go take a look at the [Delegation challenge](https://ethernaut.openzeppelin.com/level/0x68756ad5e1039e4f3b895cfaa16a3a79a5a73c59){:target="_blank",:rel="noopener"} and come back once you're done.
 
 In a nutshell, we're are given an instance of the Delegation contract over which we should claim ownership. As you may have seen, the contract only has one function that we can interact with, which happens to be its fallback function. Quite a narrow scope there - so it all comes down to this line: `delegate.delegatecall(msg.data)`, the vuln must be there. Let's see what `delegatecall` does.
 
@@ -101,7 +100,7 @@ assert.equal(owner, attackerAccount)
 console.log(`Final owner: ${owner}`)
 ~~~
 
-And the `encondeFunctionSignature` function goes like this:
+And the `encodeFunctionSignature` function goes like this:
 
 ~~~javascript
 function encodeFunctionSignature(functionName) {
@@ -116,4 +115,4 @@ All set! You can now call `npx truffle exec exploits/delegation.exploit.js`, pwn
 
 Find the full exploit code at [https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/delegation.exploit.js](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/delegation.exploit.js){:rel="noopener"}.
 
-That's it, another challenged solved. In the next post, we'll tackle [Force](https://ethernaut.zeppelin.solutions/level/0x24d661beb31b85a7d775272d7841f80e662c283b){:rel="noopener"} and, spoiler alert, learn how to press a hidden self-destruct button that all smart contracts have.
+That's it, another challenged solved. In the next post, we'll tackle [Force](https://ethernaut.openzeppelin.com/level/0x24d661beb31b85a7d775272d7841f80e662c283b){:rel="noopener"} and, spoiler alert, learn how to press a hidden self-destruct button that all smart contracts have.

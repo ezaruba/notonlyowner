@@ -1,12 +1,11 @@
 Title: Solving OpenZeppelin's Ethernaut CTF - Telephone
-Date: 2018-06-10 18:20
+Date: 2018-06-10
 Tags: ethereum, solidity, ctf, smart contracts
-Category: Ethereum
-Slug: solving-zeppelin-ethernaut-ctf-telephone
-Summary: Fifth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.zeppelin.solutions/){:target="_blank",:rel="noopener"}. We claim ownership of the Telephone contract by first understanding the difference between the sender and origin of Ethereum transactions.
+Slug: telephone-challenge-solution
+Summary: Fifth post of a series in which we tackle the challenges in the [Ethernaut CTF by OpenZeppelin](https://ethernaut.openzeppelin.com/){:target="_blank",:rel="noopener"}. We claim ownership of the Telephone contract by first understanding the difference between the sender and origin of Ethereum transactions.
 
 ## Introduction
-The Telephone contract challenge is far from being the hardest or most complex of all, but through solving it we will dig a bit deeper in how Ethereum works internally. Not so much to say here, so just go and [read the challenge](https://ethernaut.zeppelin.solutions/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:target="_blank",:rel="noopener"}.
+The Telephone contract challenge is far from being the hardest or most complex of all, but through solving it we will dig a bit deeper in how Ethereum works internally. Not so much to say here, so just go and [read the challenge](https://ethernaut.openzeppelin.com/level/0x6b7b4a5260b67c1ee9196a42dd1ed8633231ba0a){:target="_blank",:rel="noopener"}.
 
 ## The Telephone Contract
 Our objective is to claim ownership of the contract. According the the constructor's code, the deployer is the first owner.
@@ -26,7 +25,7 @@ function changeOwner(address _owner) public {
 ~~~
 Doesn't seem so difficult, except for that `if` clause. Let's see what it means.
 
-Among the available global variables in Solidity, there're two which can be a bit confusing at first: `msg.sender` and `tx.origin`. Up until now, we've only seen and used `msg.sender` to reference the caller's address. However, while [solving the Coinflip challenge](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-coinflip), we learned that public functions can be called both from 'outside' the blockchain (i.e. from an externally owned account) or 'inside' the blockchain (from another contract's code).
+Among the available global variables in Solidity, there're two which can be a bit confusing at first: `msg.sender` and `tx.origin`. Up until now, we've only seen and used `msg.sender` to reference the caller's address. However, while [solving the Coinflip challenge]({filename}coinflip.md), we learned that public functions can be called both from 'outside' the blockchain (i.e. from an externally owned account) or 'inside' the blockchain (from another contract's code).
 Moreover, we stated that while all **transactions** are originated by an EOA, contracts can send messages to each other, those messages being all included in the same transaction which triggered the whole call chain.
 
 As a result, in Solidity there are two different global variables to reference each of those cases. On the one hand, `msg.sender` references the actual caller (the last caller in the call chain) of the function. It could be an EOA or a contract address.
@@ -116,4 +115,4 @@ Now run `npx truffle exec exploits/telephone.exploit.js` and that's it! Challeng
 
 See the [full code of the exploit](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/exploits/telephone.exploit.js) and the [attacker contract code](https://github.com/tinchoabbate/ethernaut-ctf/blob/master/contracts/TelephoneAttack.sol).
 
-Thanks for reading!. For the [next post](https://www.notonlyowner.com/ethereum/solving-zeppelin-ethernaut-ctf-token/), be ready to **steal some ethers** from a basic token contract and pass the [Token challenge](https://ethernaut.zeppelin.solutions/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"}.
+Thanks for reading!. For the [next post]({filename}token.md), be ready to **steal some ethers** from a basic token contract and pass the [Token challenge](https://ethernaut.openzeppelin.com/level/0x6545df87f57d21cb096a0bfcc53a70464d062512){:rel="noopener"}.
